@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python: Automating an IP Allow-List Update | Pule Molise</title>
+    <meta name="description" content="Automated updating an IP allow list in Python, then fixed a hidden bug and added input validation and unit tests." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/python-allow-list-automation/" />
+    <meta property="og:title" content="Python: Automating an IP Allow-List Update | Pule Molise" />
+    <meta property="og:description" content="Automated updating an IP allow list in Python, then fixed a hidden bug and added input validation and unit tests." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/python-allow-list-automation/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/python-allow-list-automation.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>Python: Automating an IP Allow-List Update</nav>
+          <header class="project-header">
+            <span class="project-category">Python · Automation</span>
+            <h1>Python: Automating an IP Allow-List Update</h1>
+            <p class="lead">Automated updating an IP allow list in Python, then fixed a hidden bug and added input validation and unit tests.</p>
+            <div class="badges"><span class="type">Case study · Google Cybersecurity Professional Certificate</span><span>Python</span><span>File I/O</span><span>ipaddress</span><span>pytest</span></div>
+            <div class="project-actions"><a class="btn" href="../files/Python-Allow-List-Automation.pdf" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i>Read the full report</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/python-allow-list-automation.jpg" alt="Python: Automating an IP Allow-List Update" /></div>
+          <div class="metrics"><div class="metric"><div class="value">17 → 13</div><div class="label">IP addresses after update</div></div><div class="metric"><div class="value">1</div><div class="label">hidden bug fixed</div></div><div class="metric"><div class="value">4</div><div class="label">unit tests</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>Access to restricted content was controlled by an allow list of IP addresses in a text file. Revoked addresses had to be removed by hand, which is slow and easy to get wrong.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Write an algorithm that removes revoked addresses automatically and reliably.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Read the file, split it into a list, removed each address on the remove list, and wrote the result back.</li><li>Found and fixed a subtle bug. Removing items from a list while looping over it makes Python skip elements, which could silently leave revoked addresses in place.</li><li>Turned the algorithm into a reusable function that validates IP addresses, uses fast set lookups, keeps the file&#x27;s header and returns the removed addresses as an audit trail.</li><li>Added a command-line script and four pytest tests, including a regression test for the bug.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>All four revoked addresses were removed (17 → 13), and the tests confirmed it.</li><li>Reused the logic as the allow-list tool in the SOC Analyst Toolkit.</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="prev" href="../sql-login-investigation/"><small>&larr; Previous</small>SQL: Filtering Data for Security Investigations</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>

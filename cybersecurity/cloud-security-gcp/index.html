@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud Security: Hardening a Misconfigured GCP Deployment | Pule Molise</title>
+    <meta name="description" content="A Google Cloud deployment written twice in Terraform, first with 8 common misconfigurations and then hardened. Failed security checks went from 31 to 0." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/cloud-security-gcp/" />
+    <meta property="og:title" content="Cloud Security: Hardening a Misconfigured GCP Deployment | Pule Molise" />
+    <meta property="og:description" content="A Google Cloud deployment written twice in Terraform, first with 8 common misconfigurations and then hardened. Failed security checks went from 31 to 0." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/cloud-security-gcp/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/cloud-security-gcp.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>Cloud Security: Hardening a Misconfigured GCP Deployment</nav>
+          <header class="project-header">
+            <span class="project-category">Cloud Security · Google Cloud</span>
+            <h1>Cloud Security: Hardening a Misconfigured GCP Deployment</h1>
+            <p class="lead">A Google Cloud deployment written twice in Terraform, first with 8 common misconfigurations and then hardened. Failed security checks went from 31 to 0.</p>
+            <div class="badges"><span class="type">Personal project</span><span>Terraform</span><span>Google Cloud IAM</span><span>VPC</span><span>Cloud KMS</span><span>Cloud SQL</span><span>Checkov</span><span>GitHub Actions</span></div>
+            <div class="project-actions"><a class="btn btn-outline" data-link-type="github" data-link-key="cloud-security-gcp" target="_blank" rel="noopener"><i class="fab fa-github"></i>View code</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/cloud-security-gcp.jpg" alt="Cloud Security: Hardening a Misconfigured GCP Deployment" /></div>
+          <div class="metrics"><div class="metric"><div class="value">31 → 0</div><div class="label">failed security checks</div></div><div class="metric"><div class="value">8</div><div class="label">misconfigurations fixed</div></div><div class="metric"><div class="value">3</div><div class="label">custom scan policies</div></div><div class="metric"><div class="value">74</div><div class="label">checks passing</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>Most cloud breaches come from misconfiguration, not sophisticated attacks: storage left public, databases open to the internet, service accounts with far more access than they need. After the Google Cloud Cybersecurity Certificate, I wanted to apply what I learned with infrastructure-as-code, the way cloud teams actually work.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Design a small &quot;customer portal&quot; on Google Cloud (VM, Cloud SQL database, storage bucket), first with realistic misconfigurations, then secure it to industry benchmarks. Prove the improvement with automated scanning that would block regressions.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Wrote the insecure version in Terraform with 8 deliberate misconfigurations: SSH and RDP open to the internet, a project-wide Editor service account with a downloadable key, a VM with a public IP, a publicly readable bucket, a database open to 0.0.0.0/0 without TLS or backups, and no data-access audit logs.</li><li>Rebuilt it securely: a custom VPC with flow logs, SSH only through Identity-Aware Proxy, least-privilege IAM with no keys, a Shielded VM with OS Login and no public IP, Cloud NAT for outbound traffic, public access prevention and versioning on storage, a private-IP database with client-certificate TLS, backups and pgAudit, customer-managed encryption keys (Cloud KMS), and data-access audit logs.</li><li>Scanned both versions with Checkov, and wrote three custom policies for gaps the built-in checks missed (auto-mode VPC, service account keys, firewall logging).</li><li>Added a GitHub Actions pipeline that runs terraform fmt, validate and the scan, and fails if the secure version regresses.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>Failed checks dropped from 31 to 0 (74 passing), with one accepted exception documented in the code.</li><li>My three custom policies now catch issues the scanner missed by default.</li><li>Found that one misconfiguration, missing data-access audit logs, can&#x27;t be detected by any scanner because it&#x27;s something absent rather than a bad setting. This is a strong argument for combining automated scanning with manual review.</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="prev" href="../detection-as-code/"><small>&larr; Previous</small>Detection-as-Code: Tested Sigma Rules</a><a class="next" href="../kev-tracker/"><small>Next &rarr;</small>KEV Tracker: Known Exploited Vulnerabilities Dashboard</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL: Filtering Data for Security Investigations | Pule Molise</title>
+    <meta name="description" content="Used SQL filters to investigate suspicious logins and to list exactly which machines needed security updates." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/sql-login-investigation/" />
+    <meta property="og:title" content="SQL: Filtering Data for Security Investigations | Pule Molise" />
+    <meta property="og:description" content="Used SQL filters to investigate suspicious logins and to list exactly which machines needed security updates." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/sql-login-investigation/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/sql-login-investigation.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>SQL: Filtering Data for Security Investigations</nav>
+          <header class="project-header">
+            <span class="project-category">SQL · Log Investigation</span>
+            <h1>SQL: Filtering Data for Security Investigations</h1>
+            <p class="lead">Used SQL filters to investigate suspicious logins and to list exactly which machines needed security updates.</p>
+            <div class="badges"><span class="type">Case study · Google Cybersecurity Professional Certificate</span><span>SQL</span><span>MariaDB</span><span>AND / OR / NOT</span><span>LIKE</span></div>
+            <div class="project-actions"><a class="btn" href="../files/SQL-Login-Investigation.pdf" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i>Read the full report</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/sql-login-investigation.jpg" alt="SQL: Filtering Data for Security Investigations" /></div>
+          <div class="metrics"><div class="metric"><div class="value">6</div><div class="label">targeted queries</div></div><div class="metric"><div class="value">2</div><div class="label">tables investigated</div></div><div class="metric"><div class="value">4</div><div class="label">filter operators</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>An organisation&#x27;s database held login attempts and employee records. There had been a possible incident after business hours, and several departments needed security updates on their machines.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Write SQL queries that pull exactly the records each investigation or update needs, from tables too large to review by hand.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Found failed login attempts after 18:00 by combining conditions with AND.</li><li>Pulled login attempts on the day of a suspicious event and the day before, using OR.</li><li>Excluded an expected country stored in two formats (MEX and MEXICO) using NOT and LIKE &#x27;MEX%&#x27;.</li><li>Listed machines for targeted patching by department and building, using LIKE &#x27;East%&#x27;.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>Turned large tables into the precise lists the security team needed, in seconds.</li><li>Later reused these skills in the SOC Analyst Toolkit and approached them from the attacker&#x27;s side with a SQL-injection detection rule.</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="prev" href="../linux-file-permissions/"><small>&larr; Previous</small>Linux: Securing File Permissions</a><a class="next" href="../python-allow-list-automation/"><small>Next &rarr;</small>Python: Automating an IP Allow-List Update</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Network Traffic Analysis: DNS Service Outage | Pule Molise</title>
+    <meta name="description" content="Diagnosed a website outage from a tcpdump capture and traced it to a DNS server that had stopped answering on UDP port 53." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/dns-traffic-analysis/" />
+    <meta property="og:title" content="Network Traffic Analysis: DNS Service Outage | Pule Molise" />
+    <meta property="og:description" content="Diagnosed a website outage from a tcpdump capture and traced it to a DNS server that had stopped answering on UDP port 53." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/dns-traffic-analysis/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/dns-traffic-analysis.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>Network Traffic Analysis: DNS Service Outage</nav>
+          <header class="project-header">
+            <span class="project-category">Network Analysis · tcpdump</span>
+            <h1>Network Traffic Analysis: DNS Service Outage</h1>
+            <p class="lead">Diagnosed a website outage from a tcpdump capture and traced it to a DNS server that had stopped answering on UDP port 53.</p>
+            <div class="badges"><span class="type">Case study · Google Cybersecurity Professional Certificate</span><span>tcpdump</span><span>DNS</span><span>UDP</span><span>ICMP</span><span>TCP/IP model</span></div>
+            <div class="project-actions"><a class="btn" href="../files/DNS-Network-Traffic-Analysis.pdf" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i>Read the full report</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/dns-traffic-analysis.jpg" alt="Network Traffic Analysis: DNS Service Outage" /></div>
+          <div class="metrics"><div class="metric"><div class="value">3 / 3</div><div class="label">DNS queries rejected</div></div><div class="metric"><div class="value">~4 min</div><div class="label">of traffic analysed</div></div><div class="metric"><div class="value">3</div><div class="label">causes ranked</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>Customers of a client reported that www.yummyrecipesforme.com wouldn&#x27;t load and showed the error &quot;destination port unreachable&quot;.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Find out which network protocol and service were failing, and document the incident for the security engineers handling the fix.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Reproduced the error, then captured the traffic with tcpdump while loading the site.</li><li>Matched each outgoing DNS query to its response, and recorded source and destination, ports and timestamps.</li><li>Worked through the evidence layer by layer. The ICMP reply showed the DNS host was reachable, while the port-unreachable code pointed to a failed service.</li><li>Ranked the likely causes and escalated with concrete next steps.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>Root cause: the DNS server at 203.0.113.2 was up, but no service was listening on UDP port 53. All three queries over about four minutes got an ICMP port-unreachable reply, so the website itself was probably fine.</li><li>Recommended checking and restarting the DNS service, reviewing firewall changes, adding a secondary DNS server, and monitoring DNS availability.</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="prev" href="../botium-toys-security-audit/"><small>&larr; Previous</small>Botium Toys: Internal Security Audit</a><a class="next" href="../syn-flood-dos-incident/"><small>Next &rarr;</small>Incident Report: SYN Flood DoS Attack</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>

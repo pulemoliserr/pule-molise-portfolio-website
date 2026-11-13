@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detection-as-Code: Tested Sigma Rules | Pule Molise</title>
+    <meta name="description" content="16 Sigma detection rules mapped to MITRE ATT&amp;CK, each tested automatically against attack and benign log events." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/detection-as-code/" />
+    <meta property="og:title" content="Detection-as-Code: Tested Sigma Rules | Pule Molise" />
+    <meta property="og:description" content="16 Sigma detection rules mapped to MITRE ATT&amp;CK, each tested automatically against attack and benign log events." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/detection-as-code/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/detection-as-code.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>Detection-as-Code: Tested Sigma Rules</nav>
+          <header class="project-header">
+            <span class="project-category">Detection Engineering</span>
+            <h1>Detection-as-Code: Tested Sigma Rules</h1>
+            <p class="lead">16 Sigma detection rules mapped to MITRE ATT&amp;CK, each tested automatically against attack and benign log events.</p>
+            <div class="badges"><span class="type">Personal project</span><span>Sigma</span><span>pySigma</span><span>MITRE ATT&amp;CK</span><span>Python</span><span>Splunk SPL</span><span>Elastic</span><span>GitHub Actions</span></div>
+            <div class="project-actions"><a class="btn btn-outline" data-link-type="github" data-link-key="detection-as-code" target="_blank" rel="noopener"><i class="fab fa-github"></i>View code</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/detection-as-code.jpg" alt="Detection-as-Code: Tested Sigma Rules" /></div>
+          <div class="metrics"><div class="metric"><div class="value">16</div><div class="label">detection rules</div></div><div class="metric"><div class="value">15</div><div class="label">ATT&amp;CK techniques</div></div><div class="metric"><div class="value">119</div><div class="label">test events</div></div><div class="metric"><div class="value">100%</div><div class="label">tests passing</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>SOC teams depend on detection rules, but rules written straight into a SIEM are hard to review, often go untested and can break silently when someone edits them. I wanted a project that shows how detections are built and maintained in a modern SOC, not just how alerts are read.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Build a version-controlled library of rules for common attacker behaviour on Windows, Linux and web servers. Prove that each rule fires on realistic attacks without firing on normal activity, and make the rules usable in more than one SIEM.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Wrote 16 rules in Sigma, the vendor-neutral detection format, covering encoded PowerShell, Office macros launching a shell, LSASS credential dumping, ransomware deleting shadow copies, brute force, path traversal and SQL injection.</li><li>Tagged every rule with its MITRE ATT&amp;CK techniques, a severity level and documented false positives.</li><li>Built two brute-force correlation rules (10+ failed logons from one IP within 5 minutes) for Windows and Linux.</li><li>Wrote a Python test harness with pySigma. Each rule is converted to SQL and run against its own attack events, which must all alert, and benign look-alikes, which must not.</li><li>Generated Splunk and Elastic queries and an ATT&amp;CK Navigator coverage layer, and set up GitHub Actions to run the tests on every commit.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>All 16 rules pass against 119 test events, covering 15 ATT&amp;CK techniques across 8 tactics.</li><li>The tests caught a real gap. My first LSASS rule missed the comsvcs.dll MiniDump technique because attackers pass a process ID, not the process name. I fixed it and added a regression test.</li><li>Deliberately breaking rules confirmed that the test suite catches regressions.</li><li>Next step: replace the hand-written sample events with real events captured in my home SOC lab.</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="next" href="../cloud-security-gcp/"><small>Next &rarr;</small>Cloud Security: Hardening a Misconfigured GCP Deployment</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>

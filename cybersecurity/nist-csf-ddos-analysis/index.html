@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incident Analysis: ICMP Flood DDoS with NIST CSF | Pule Molise</title>
+    <meta name="description" content="Used the NIST Cybersecurity Framework to turn a DDoS attack that took a network down for two hours into a security improvement plan." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/nist-csf-ddos-analysis/" />
+    <meta property="og:title" content="Incident Analysis: ICMP Flood DDoS with NIST CSF | Pule Molise" />
+    <meta property="og:description" content="Used the NIST Cybersecurity Framework to turn a DDoS attack that took a network down for two hours into a security improvement plan." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/nist-csf-ddos-analysis/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/nist-csf-ddos-analysis.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>Incident Analysis: ICMP Flood DDoS with NIST CSF</nav>
+          <header class="project-header">
+            <span class="project-category">Incident Analysis · NIST CSF</span>
+            <h1>Incident Analysis: ICMP Flood DDoS with NIST CSF</h1>
+            <p class="lead">Used the NIST Cybersecurity Framework to turn a DDoS attack that took a network down for two hours into a security improvement plan.</p>
+            <div class="badges"><span class="type">Case study · Google Cybersecurity Professional Certificate</span><span>NIST CSF 2.0</span><span>Incident response</span><span>Network security</span></div>
+            <div class="project-actions"><a class="btn" href="../files/NIST-CSF-DDoS-Incident-Analysis.pdf" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i>Read the full report</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/nist-csf-ddos-analysis.jpg" alt="Incident Analysis: ICMP Flood DDoS with NIST CSF" /></div>
+          <div class="metrics"><div class="metric"><div class="value">2 h</div><div class="label">outage analysed</div></div><div class="metric"><div class="value">5</div><div class="label">CSF functions covered</div></div><div class="metric"><div class="value">1</div><div class="label">DDoS response playbook</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>A multimedia company&#x27;s internal network went down for two hours when an ICMP flood came in through a firewall that had never been configured. The team blocked ICMP, then added rate limiting, source IP verification, network monitoring and an IDS/IPS.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Analyse the incident with the NIST CSF and create a plan to improve the company&#x27;s network security.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Analysed the incident across Identify, Protect, Detect, Respond and Recover.</li><li>Identified the real root cause as a process failure, with no configuration baseline or review, not just one bad device.</li><li>Planned improvements for each function: a firewall baseline, change management and network segmentation (Protect); alert thresholds, IPS in prevention mode and a SIEM (Detect); a written DDoS playbook, communication plan and post-incident review (Respond); and tested recovery steps with upstream DDoS mitigation (Recover).</li><li>Noted where CSF 2.0&#x27;s new Govern function applies, through ownership and approval of configuration changes.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>Produced a plan that fixes the underlying process, not just the single device.</li><li>Showed how to use a framework to turn one incident into lasting improvements.</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="prev" href="../website-compromise-brute-force/"><small>&larr; Previous</small>Incident Report: Website Compromise via Brute Force</a><a class="next" href="../linux-file-permissions/"><small>Next &rarr;</small>Linux: Securing File Permissions</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>

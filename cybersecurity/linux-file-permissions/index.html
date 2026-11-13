@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linux: Securing File Permissions | Pule Molise</title>
+    <meta name="description" content="Audited and corrected file permissions on a research team&#x27;s Linux directory to enforce least privilege." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/linux-file-permissions/" />
+    <meta property="og:title" content="Linux: Securing File Permissions | Pule Molise" />
+    <meta property="og:description" content="Audited and corrected file permissions on a research team&#x27;s Linux directory to enforce least privilege." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/linux-file-permissions/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/linux-file-permissions.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>Linux: Securing File Permissions</nav>
+          <header class="project-header">
+            <span class="project-category">Linux · Least Privilege</span>
+            <h1>Linux: Securing File Permissions</h1>
+            <p class="lead">Audited and corrected file permissions on a research team&#x27;s Linux directory to enforce least privilege.</p>
+            <div class="badges"><span class="type">Case study · Google Cybersecurity Professional Certificate</span><span>Bash</span><span>ls</span><span>chmod</span><span>Linux permissions</span></div>
+            <div class="project-actions"><a class="btn" href="../files/Linux-File-Permissions.pdf" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i>Read the full report</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/linux-file-permissions.jpg" alt="Linux: Securing File Permissions" /></div>
+          <div class="metrics"><div class="metric"><div class="value">6</div><div class="label">items audited</div></div><div class="metric"><div class="value">3</div><div class="label">permissions corrected</div></div><div class="metric"><div class="value">0</div><div class="label">world-writable files left</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>A research team&#x27;s project files had permissions that didn&#x27;t match who should have access, including a file that any user on the system could modify.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Check every file and directory, including hidden ones, and correct the permissions to match the organisation&#x27;s authorisation policy.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Listed everything with ls -la, including hidden files, and decoded each 10-character permission string.</li><li>Removed write access for other users with chmod o-w project_k.txt.</li><li>Made an archived hidden file read-only for its owner and group with chmod u-w,g-w,g+r .project_x.txt (octal 440).</li><li>Restricted the drafts directory to its owner with chmod g-x drafts (octal 700), and checked the result after each change.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>Corrected 3 items so that every permission matches policy, leaving no world-writable files.</li><li>Later turned this into a detection rule that alerts when someone makes files world-writable (see Detection-as-Code).</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="prev" href="../nist-csf-ddos-analysis/"><small>&larr; Previous</small>Incident Analysis: ICMP Flood DDoS with NIST CSF</a><a class="next" href="../sql-login-investigation/"><small>Next &rarr;</small>SQL: Filtering Data for Security Investigations</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>
