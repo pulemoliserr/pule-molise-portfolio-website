@@ -1,5 +1,6 @@
 /* ============================== typing animation ============================ */
-var typed = new Typed('.typing', {
+// guard: if the Typed.js CDN fails to load, keep the rest of the site working
+var typed = window.Typed && new Typed('.typing', {
   strings: [
     '',
     'Data Scientist',
@@ -94,3 +95,20 @@ function asideSectionTogglerBtn() {
     allSection[i].classList.toggle('open');
   }
 }
+
+/* ============================== Open section from URL hash ============================ */
+// lets other pages link straight to a section, e.g. /#portfolio or /#contact
+function openSectionFromHash() {
+  const id = window.location.hash.slice(1);
+  if (!id || !document.getElementById(id)) return;
+  const link = nav.querySelector('a[href="#' + id + '"]');
+  if (link) {
+    removeBackSection();
+    for (let j = 0; j < totalNavList; j++) {
+      navList[j].querySelector('a').classList.remove('active');
+    }
+    link.classList.add('active');
+    showSection(link);
+  }
+}
+openSectionFromHash();
