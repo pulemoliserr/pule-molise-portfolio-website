@@ -451,3 +451,24 @@
     font-size: 20px;
   }
 }
+
+/* ---------- Contact form status message ---------- */
+.contact .form-status {
+  margin-top: 16px;
+  font-size: 15px;
+  min-height: 22px;
+}
+
+.contact .form-status.ok {
+  color: #1a9e5c;
+}
+
+.contact .form-status.error {
+  color: var(--skin-color);
+}
+
+.contact .contact-form .btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
