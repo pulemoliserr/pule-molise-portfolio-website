@@ -32,3 +32,13 @@ stays hidden until its URL is filled in.
 
 The branch cards on the home page (`index.html`, Portfolio section) show "6 projects" and "13 projects".
 Update those numbers by hand when you add or remove projects.
+
+## Certifications
+
+The Certifications section on the home page and the "Related certifications" strips on `/data-science/` and
+`/cybersecurity/` are built from `tools/certifications.yml`.
+
+To add a certificate: put the PDF in `certifications/files/<slug>.pdf`, create a preview image at
+`images/certifications/<slug>.jpg` (for example, a screenshot of the PDF about 880 px wide), add an entry to the
+YAML file and run `python tools/build_portfolio.py`. The script rewrites only the part of `index.html` between the
+`<!-- certifications:start -->` and `<!-- certifications:end -->` markers.

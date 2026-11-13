@@ -1,0 +1,100 @@
+# Professional certifications shown on the home page (Certifications section) and,
+# as "Related certifications", on the /cybersecurity and /data-science pages.
+# Edit, then run:  python tools/build_portfolio.py
+#
+# Fields
+#   slug     file names: certifications/files/<slug>.pdf and images/certifications/<slug>.jpg
+#   verify   optional public verification link
+#   number   optional certificate number (CFI certificates have no public verify link)
+#   related  optional: show on /cybersecurity ("cybersecurity") or /data-science ("data-science")
+
+groups:
+  - Cybersecurity
+  - Data Analytics & Business Intelligence
+  - Finance
+  - Project Management, Design & Marketing
+
+certifications:
+  - slug: google-cloud-cybersecurity
+    title: Google Cloud Cybersecurity
+    issuer: Google Cloud · Coursera
+    date: Jul 2026
+    courses: 5
+    group: Cybersecurity
+    related: cybersecurity
+    verify: https://coursera.org/verify/professional-cert/F0VEYTO6ROSM
+
+  - slug: google-cybersecurity
+    title: Google Cybersecurity
+    issuer: Google · Coursera
+    date: May 2026
+    courses: 9
+    group: Cybersecurity
+    related: cybersecurity
+    verify: https://coursera.org/verify/professional-cert/F4472L16NNVR
+
+  - slug: google-data-analytics
+    title: Google Data Analytics
+    issuer: Google · Coursera
+    date: Aug 2025
+    courses: 9
+    group: Data Analytics & Business Intelligence
+    related: data-science
+    verify: https://coursera.org/verify/professional-cert/875O7JTBINXS
+
+  - slug: google-advanced-data-analytics
+    title: Google Advanced Data Analytics
+    issuer: Google · Coursera
+    date: Apr 2025
+    courses: 7
+    group: Data Analytics & Business Intelligence
+    related: data-science
+    verify: https://coursera.org/verify/professional-cert/IOL6KB1NASQ5
+
+  - slug: google-business-intelligence
+    title: Google Business Intelligence
+    issuer: Google · Coursera
+    date: Apr 2025
+    courses: 3
+    group: Data Analytics & Business Intelligence
+    related: data-science
+    verify: https://coursera.org/verify/professional-cert/IYJ2JCIJ5H96
+
+  - slug: cfi-bida
+    title: Business Intelligence & Data Analyst (BIDA)®
+    issuer: Corporate Finance Institute (CFI)
+    date: Jun 2023
+    group: Data Analytics & Business Intelligence
+    related: data-science
+    number: "75006433"
+
+  - slug: cfi-fmva
+    title: Financial Modeling & Valuation Analyst (FMVA)®
+    issuer: Corporate Finance Institute (CFI)
+    date: Nov 2022
+    group: Finance
+    number: "62680503"
+
+  - slug: google-project-management
+    title: Google Project Management
+    issuer: Google · Coursera
+    date: Jun 2025
+    courses: 6
+    group: Project Management, Design & Marketing
+    verify: https://coursera.org/verify/professional-cert/ARXHHJ1VXUL1
+
+  - slug: google-ux-design
+    title: Google UX Design
+    issuer: Google · Coursera
+    date: Sep 2024
+    courses: 7
+    group: Project Management, Design & Marketing
+    verify: https://coursera.org/verify/professional-cert/IPGIHBY3Q4HC
+
+  - slug: google-digital-marketing-ecommerce
+    title: Google Digital Marketing & E-commerce
+    issuer: Google · Coursera
+    date: Apr 2025
+    courses: 7
+    group: Project Management, Design & Marketing
+    verify: https://coursera.org/verify/professional-cert/5AIL2GQI2C7J

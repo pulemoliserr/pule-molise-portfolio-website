@@ -112,3 +112,22 @@ function openSectionFromHash() {
   }
 }
 openSectionFromHash();
+
+/* ============================== In-page links to sections ============================ */
+// e.g. <a href="#certifications" data-section-link> behaves like clicking that menu item
+document.querySelectorAll('[data-section-link]').forEach(function (link) {
+  link.addEventListener('click', function (event) {
+    const target = nav.querySelector('a[href="' + link.getAttribute('href') + '"]');
+    if (target) {
+      event.preventDefault();
+      removeBackSection();
+      for (let j = 0; j < totalNavList; j++) {
+        const a = navList[j].querySelector('a');
+        if (a.classList.contains('active')) addBackSection(j);
+        a.classList.remove('active');
+      }
+      target.classList.add('active');
+      showSection(target);
+    }
+  });
+});

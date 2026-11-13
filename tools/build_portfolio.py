@@ -1,6 +1,7 @@
-"""Build the portfolio branch pages of pulemolise.net.
+"""Build the portfolio branch pages and certifications of pulemolise.net.
 
 Generates:
+  index.html (Certifications section)  from tools/certifications.yml
   data-science/index.html            from tools/data-science-cards.html
   cybersecurity/index.html           from tools/cybersecurity-projects.yml
   cybersecurity/<slug>/index.html    one S.T.A.R. page per cybersecurity project
@@ -55,6 +56,7 @@ def shell(depth, active, title, description, canonical, body, extra_head=""):
           <li><a href="{up}#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
           <li class="sub-nav"><a href="{up}data-science/"{ds_active}>Data Science</a></li>
           <li class="sub-nav"><a href="{up}cybersecurity/"{cy_active}>Cybersecurity</a></li>
+          <li><a href="{up}#certifications"><i class="fa fa-certificate"></i> Certifications</a></li>
           <li><a href="{up}#contact"><i class="fa fa-comments"></i> Contact</a></li>
         </ul>
       </div>
@@ -101,8 +103,95 @@ def breadcrumb(depth, *crumbs):
     return '          <nav class="breadcrumb">' + "<span>/</span>".join(parts) + "</nav>"
 
 
+# ------------------------------------------------------------- certifications
+def cert_links(c, up):
+    links = []
+    if c.get("verify"):
+        links.append(f'<a href="{c["verify"]}" target="_blank" rel="noopener"><i class="fa fa-check-circle"></i> Verify</a>')
+    links.append(f'<a href="{up}certifications/files/{c["slug"]}.pdf" target="_blank" rel="noopener">'
+                 '<i class="fa fa-file-pdf"></i> View certificate</a>')
+    return "".join(links)
+
+
+def cert_meta(c):
+    parts = [c["date"]]
+    if c.get("courses"):
+        parts.append(f'{c["courses"]} courses')
+    if c.get("number"):
+        parts.append(f'Certificate no. {c["number"]}')
+    return " · ".join(parts)
+
+
+def build_certifications_section(certs):
+    """Return the inner HTML of the home page's Certifications section."""
+    out = ['            <div class="row">',
+           '              <div class="section-title padd-15"><h2>Certifications</h2></div>',
+           "            </div>",
+           '            <div class="row">',
+           f'              <p class="cert-intro padd-15">{len(certs["certifications"])} professional certificates '
+           "from Google and the Corporate Finance Institute. Google certificates can be verified on Coursera.</p>",
+           "            </div>"]
+    for group in certs["groups"]:
+        items = [c for c in certs["certifications"] if c["group"] == group]
+        if not items:
+            continue
+        out += [f'            <h3 class="cert-group">{e(group)}</h3>', '            <div class="row">']
+        for c in items:
+            out.append(f"""              <div class="cert-item padd-15">
+                <div class="cert-card shadow-dark">
+                  <a class="cert-img" href="certifications/files/{c['slug']}.pdf" target="_blank" rel="noopener">
+                    <img src="images/certifications/{c['slug']}.jpg" alt="{e(c['title'])} certificate" loading="lazy" />
+                  </a>
+                  <div class="cert-body">
+                    <span class="cert-issuer">{e(c['issuer'])}</span>
+                    <h4>{e(c['title'])}</h4>
+                    <p class="cert-meta">{e(cert_meta(c))}</p>
+                    <div class="cert-links">{cert_links(c, '')}</div>
+                  </div>
+                </div>
+              </div>""")
+        out.append("            </div>")
+    return "\n".join(out)
+
+
+def inject_certifications(certs):
+    """Replace the block between the certifications markers in index.html, keeping its CRLF line endings."""
+    path = ROOT / "index.html"
+    raw = path.read_bytes().decode()
+    start, end = "<!-- certifications:start -->", "<!-- certifications:end -->"
+    assert raw.count(start) == 1 and raw.count(end) == 1, "certifications markers missing in index.html"
+    a = raw.index(start) + len(start)
+    b = raw.index(end)
+    block = "\n" + build_certifications_section(certs) + "\n            "
+    newline = "\r\n" if "\r\n" in raw else "\n"
+    block = block.replace("\n", newline)
+    path.write_bytes((raw[:a] + block + raw[b:]).encode())
+
+
+def related_certs(certs, key, depth):
+    up = "../" * depth
+    items = [c for c in certs["certifications"] if c.get("related") == key]
+    if not items:
+        return ""
+    cards = "".join(f"""
+              <div class="related-cert">
+                <img src="{up}images/certifications/{c['slug']}.jpg" alt="" loading="lazy" />
+                <div>
+                  <h4>{e(c['title'])}</h4>
+                  <p>{e(c['issuer'])} · {e(c['date'])}</p>
+                  <div class="cert-links">{cert_links(c, up)}</div>
+                </div>
+              </div>""" for c in items)
+    return f"""          <div class="related-certs">
+            <h3>Related certifications</h3>
+            <div class="related-grid">{cards}
+            </div>
+            <a class="related-all" href="{up}#certifications">See all certifications <i class="fa fa-arrow-right"></i></a>
+          </div>"""
+
+
 # --------------------------------------------------------------- data science
-def build_data_science():
+def build_data_science(certs):
     cards = (TOOLS / "data-science-cards.html").read_text().split("-->", 1)[1]
     cards = cards.replace('src="images/', 'src="../images/')
     body = "\n".join([
@@ -114,6 +203,7 @@ def build_data_science():
         'rel="noopener">datascienceportfol.io</a> profile.</p>',
         cards.rstrip(),
         "          </div>",
+        related_certs(certs, "data-science", 1),
     ])
     page = shell(1, "data-science", "Data Science Projects | Pule Molise",
                  "Data science and machine learning projects by Pule Molise.", "/data-science/", body)
@@ -144,7 +234,7 @@ def card(p):
             </div>"""
 
 
-def build_cyber_index(data):
+def build_cyber_index(data, certs):
     projects = data["projects"]
     used = [g for g in data["groups"] if any(p["group"] == g for p in projects)]
     filters = ['<button class="active" data-filter="all">All</button>'] + [
@@ -162,6 +252,7 @@ def build_cyber_index(data):
         '            <div class="filters padd-15">' + "".join(filters) + "</div>",
         "\n".join(card(p) for p in projects),
         "          </div>",
+        related_certs(certs, "cybersecurity", 1),
     ])
     page = shell(1, "cybersecurity", "Cybersecurity Projects | Pule Molise",
                  "Cybersecurity portfolio of Pule Molise: detection engineering, cloud security, incident response and GRC.",
@@ -246,11 +337,18 @@ def main():
             f = p.get("links", {}).get(key)
             assert not f or (ROOT / "cybersecurity" / "files" / f).exists(), f"missing file {f}"
         assert (ROOT / "images" / "cybersecurity" / f"{p['slug']}.jpg").exists(), f"missing thumbnail for {p['slug']}"
-    build_data_science()
-    build_cyber_index(data)
+    certs = yaml.safe_load((TOOLS / "certifications.yml").read_text())
+    for c in certs["certifications"]:
+        assert c["group"] in certs["groups"], f"{c['slug']}: unknown group {c['group']}"
+        for f in (ROOT / "certifications" / "files" / f"{c['slug']}.pdf", ROOT / "images" / "certifications" / f"{c['slug']}.jpg"):
+            assert f.exists(), f"missing {f.relative_to(ROOT)}"
+    inject_certifications(certs)
+    build_data_science(certs)
+    build_cyber_index(data, certs)
     for i, p in enumerate(projects):
         build_project(p, projects[i - 1] if i else None, projects[i + 1] if i + 1 < len(projects) else None)
-    print(f"Built data-science/, cybersecurity/ and {len(projects)} project pages.")
+    print(f"Built certifications ({len(certs['certifications'])}), data-science/, cybersecurity/ "
+          f"and {len(projects)} project pages.")
 
 
 if __name__ == "__main__":
