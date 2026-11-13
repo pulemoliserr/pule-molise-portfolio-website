@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incident Report: SYN Flood DoS Attack | Pule Molise</title>
+    <meta name="description" content="Identified a SYN flood denial-of-service attack from a packet capture, explained it to management and recommended mitigations." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/syn-flood-dos-incident/" />
+    <meta property="og:title" content="Incident Report: SYN Flood DoS Attack | Pule Molise" />
+    <meta property="og:description" content="Identified a SYN flood denial-of-service attack from a packet capture, explained it to management and recommended mitigations." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/syn-flood-dos-incident/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/syn-flood-dos-incident.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>Incident Report: SYN Flood DoS Attack</nav>
+          <header class="project-header">
+            <span class="project-category">Incident Response · Network</span>
+            <h1>Incident Report: SYN Flood DoS Attack</h1>
+            <p class="lead">Identified a SYN flood denial-of-service attack from a packet capture, explained it to management and recommended mitigations.</p>
+            <div class="badges"><span class="type">Case study · Google Cybersecurity Professional Certificate</span><span>Wireshark</span><span>TCP three-way handshake</span><span>DoS mitigation</span></div>
+            <div class="project-actions"><a class="btn" href="../files/SYN-Flood-DoS-Incident-Report.pdf" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i>Read the full report</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/syn-flood-dos-incident.jpg" alt="Incident Report: SYN Flood DoS Attack" /></div>
+          <div class="metrics"><div class="metric"><div class="value">1</div><div class="label">attacking source IP</div></div><div class="metric"><div class="value">DoS</div><div class="label">classified (not DDoS)</div></div><div class="metric"><div class="value">5</div><div class="label">mitigations recommended</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>A travel agency&#x27;s sales website started timing out for employees, and a monitoring alert fired. A packet capture showed a huge volume of TCP SYN requests from one unfamiliar IP address.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Identify the attack, explain how it broke the website in terms a manager can act on, and recommend how to stop it from happening again.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Analysed the capture and classified the event as a SYN flood. Because the traffic came from a single source, it was a DoS attack, not a DDoS.</li><li>Explained the TCP three-way handshake and how half-open connections fill up the server&#x27;s backlog until legitimate visitors are dropped.</li><li>Assessed the business impact on employees serving customers.</li><li>Evaluated the immediate response (blocking the IP) and explained why it&#x27;s only a stopgap when source addresses can be spoofed.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>Produced a clear incident report for management.</li><li>Recommended SYN cookies, per-source rate limiting, an IPS, an upstream DDoS protection service and monitoring thresholds, which fix the problem at the handshake level instead of chasing IP addresses.</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="prev" href="../dns-traffic-analysis/"><small>&larr; Previous</small>Network Traffic Analysis: DNS Service Outage</a><a class="next" href="../network-hardening-risk-assessment/"><small>Next &rarr;</small>Security Risk Assessment: Network Hardening</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEV Tracker: Known Exploited Vulnerabilities Dashboard | Pule Molise</title>
+    <meta name="description" content="Interactive dashboard of CISA&#x27;s catalog of vulnerabilities exploited in real attacks, showing which vendors, weaknesses and patch deadlines matter most." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/kev-tracker/" />
+    <meta property="og:title" content="KEV Tracker: Known Exploited Vulnerabilities Dashboard | Pule Molise" />
+    <meta property="og:description" content="Interactive dashboard of CISA&#x27;s catalog of vulnerabilities exploited in real attacks, showing which vendors, weaknesses and patch deadlines matter most." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/kev-tracker/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/kev-tracker.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>KEV Tracker: Known Exploited Vulnerabilities Dashboard</nav>
+          <header class="project-header">
+            <span class="project-category">Vulnerability Management · R Shiny</span>
+            <h1>KEV Tracker: Known Exploited Vulnerabilities Dashboard</h1>
+            <p class="lead">Interactive dashboard of CISA&#x27;s catalog of vulnerabilities exploited in real attacks, showing which vendors, weaknesses and patch deadlines matter most.</p>
+            <div class="badges"><span class="type">Personal project</span><span>R</span><span>Shiny</span><span>bslib</span><span>plotly</span><span>DT</span><span>dplyr</span></div>
+            <div class="project-actions"><a class="btn" data-link-type="demo" data-link-key="kev-tracker" target="_blank" rel="noopener"><i class="fa fa-play-circle"></i>Live demo</a><a class="btn btn-outline" data-link-type="github" data-link-key="kev-tracker" target="_blank" rel="noopener"><i class="fab fa-github"></i>View code</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/kev-tracker.jpg" alt="KEV Tracker: Known Exploited Vulnerabilities Dashboard" /></div>
+          <div class="metrics"><div class="metric"><div class="value">1,766</div><div class="label">exploited vulnerabilities analysed</div></div><div class="metric"><div class="value">291</div><div class="label">vendors</div></div><div class="metric"><div class="value">20%</div><div class="label">linked to ransomware</div></div><div class="metric"><div class="value">45%</div><div class="label">exploited in the year disclosed</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>Tens of thousands of new CVEs are published every year, far more than any team can patch. CISA&#x27;s Known Exploited Vulnerabilities (KEV) catalog lists the ones confirmed to be exploited in the wild, which makes it one of the most practical signals for deciding what to fix first. But the raw data is hard to read for trends.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Turn the KEV catalog into an interactive dashboard that answers vulnerability-management questions: which vendors and weakness types dominate, how quickly flaws get exploited, and how much is linked to ransomware. The project combines my data science and security skills.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Built an R Shiny app with Overview, Insights, Explore and About pages, and filters for date, vendor, ransomware use and free-text search that apply across every page.</li><li>Derived new measures: vulnerability age when it was added (year added minus CVE year) and the patch window (due date minus date added).</li><li>Added key findings that recalculate for any filter, a vendor-by-year heatmap, a searchable table linked to the NVD, and CSV export.</li><li>Made the app download CISA&#x27;s live feed at start-up, falling back to a bundled snapshot, and used a colour-blind-safe palette.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>Of 1,766 entries (to 30 Oct 2026), Microsoft accounts for 22%, with Windows alone at 175.</li><li>45% were exploited in the same year their CVE was assigned, while 16% were more than 5 years old when added. Attackers move fast, and old unpatched systems stay targets.</li><li>20% are linked to ransomware campaigns, and the most common patch deadline is 21 days.</li><li>The findings shaped my detection rules. For example, path traversal (CWE-22), one of the most common KEV weaknesses, got its own rule.</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="prev" href="../cloud-security-gcp/"><small>&larr; Previous</small>Cloud Security: Hardening a Misconfigured GCP Deployment</a><a class="next" href="../soc-analyst-toolkit/"><small>Next &rarr;</small>SOC Analyst Toolkit</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>

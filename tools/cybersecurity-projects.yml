@@ -1,0 +1,389 @@
+# Cybersecurity portfolio content.
+# Edit this file, then run:  python tools/build_portfolio.py
+# It regenerates /cybersecurity/index.html and one page per project at /cybersecurity/<slug>/.
+#
+# Fields
+#   slug       URL name: pulemolise.net/cybersecurity/<slug>/
+#   type       "personal" (your own project) or "case-study" (course scenario)
+#   group      filter on the /cybersecurity page (see `groups` below)
+#   links      report: a PDF in /cybersecurity/files/
+#              github / demo: a key in /cybersecurity/links.js (fill in the URL there once published)
+
+groups:
+  detection: Detection & Response
+  cloud: Cloud Security
+  vuln: Vulnerability Management
+  grc: GRC & Risk
+  network: Network Analysis
+  automation: Scripting & Automation
+
+projects:
+  - slug: detection-as-code
+    title: "Detection-as-Code: Tested Sigma Rules"
+    category: Detection Engineering
+    group: detection
+    type: personal
+    summary: 16 Sigma detection rules mapped to MITRE ATT&CK, each tested automatically against attack and benign log events.
+    tools: [Sigma, pySigma, MITRE ATT&CK, Python, Splunk SPL, Elastic, GitHub Actions]
+    metrics:
+      - ["16", "detection rules"]
+      - ["15", "ATT&CK techniques"]
+      - ["119", "test events"]
+      - ["100%", "tests passing"]
+    situation: >
+      SOC teams depend on detection rules, but rules written straight into a SIEM are hard to review, often go
+      untested and can break silently when someone edits them. I wanted a project that shows how detections are
+      built and maintained in a modern SOC, not just how alerts are read.
+    task: >
+      Build a version-controlled library of rules for common attacker behaviour on Windows, Linux and web servers.
+      Prove that each rule fires on realistic attacks without firing on normal activity, and make the rules usable
+      in more than one SIEM.
+    action:
+      - Wrote 16 rules in Sigma, the vendor-neutral detection format, covering encoded PowerShell, Office macros launching a shell, LSASS credential dumping, ransomware deleting shadow copies, brute force, path traversal and SQL injection.
+      - Tagged every rule with its MITRE ATT&CK techniques, a severity level and documented false positives.
+      - Built two brute-force correlation rules (10+ failed logons from one IP within 5 minutes) for Windows and Linux.
+      - Wrote a Python test harness with pySigma. Each rule is converted to SQL and run against its own attack events, which must all alert, and benign look-alikes, which must not.
+      - Generated Splunk and Elastic queries and an ATT&CK Navigator coverage layer, and set up GitHub Actions to run the tests on every commit.
+    result:
+      - All 16 rules pass against 119 test events, covering 15 ATT&CK techniques across 8 tactics.
+      - The tests caught a real gap. My first LSASS rule missed the comsvcs.dll MiniDump technique because attackers pass a process ID, not the process name. I fixed it and added a regression test.
+      - Deliberately breaking rules confirmed that the test suite catches regressions.
+      - "Next step: replace the hand-written sample events with real events captured in my home SOC lab."
+    links: {github: detection-as-code}
+
+  - slug: cloud-security-gcp
+    title: "Cloud Security: Hardening a Misconfigured GCP Deployment"
+    category: Cloud Security · Google Cloud
+    group: cloud
+    type: personal
+    summary: A Google Cloud deployment written twice in Terraform, first with 8 common misconfigurations and then hardened. Failed security checks went from 31 to 0.
+    tools: [Terraform, Google Cloud IAM, VPC, Cloud KMS, Cloud SQL, Checkov, GitHub Actions]
+    metrics:
+      - ["31 → 0", "failed security checks"]
+      - ["8", "misconfigurations fixed"]
+      - ["3", "custom scan policies"]
+      - ["74", "checks passing"]
+    situation: >
+      Most cloud breaches come from misconfiguration, not sophisticated attacks: storage left public, databases open to
+      the internet, service accounts with far more access than they need. After the Google Cloud Cybersecurity
+      Certificate, I wanted to apply what I learned with infrastructure-as-code, the way cloud teams actually work.
+    task: >
+      Design a small "customer portal" on Google Cloud (VM, Cloud SQL database, storage bucket), first with realistic
+      misconfigurations, then secure it to industry benchmarks. Prove the improvement with automated scanning that
+      would block regressions.
+    action:
+      - "Wrote the insecure version in Terraform with 8 deliberate misconfigurations: SSH and RDP open to the internet, a project-wide Editor service account with a downloadable key, a VM with a public IP, a publicly readable bucket, a database open to 0.0.0.0/0 without TLS or backups, and no data-access audit logs."
+      - "Rebuilt it securely: a custom VPC with flow logs, SSH only through Identity-Aware Proxy, least-privilege IAM with no keys, a Shielded VM with OS Login and no public IP, Cloud NAT for outbound traffic, public access prevention and versioning on storage, a private-IP database with client-certificate TLS, backups and pgAudit, customer-managed encryption keys (Cloud KMS), and data-access audit logs."
+      - Scanned both versions with Checkov, and wrote three custom policies for gaps the built-in checks missed (auto-mode VPC, service account keys, firewall logging).
+      - Added a GitHub Actions pipeline that runs terraform fmt, validate and the scan, and fails if the secure version regresses.
+    result:
+      - Failed checks dropped from 31 to 0 (74 passing), with one accepted exception documented in the code.
+      - My three custom policies now catch issues the scanner missed by default.
+      - "Found that one misconfiguration, missing data-access audit logs, can't be detected by any scanner because it's something absent rather than a bad setting. This is a strong argument for combining automated scanning with manual review."
+    links: {github: cloud-security-gcp}
+
+  - slug: kev-tracker
+    title: "KEV Tracker: Known Exploited Vulnerabilities Dashboard"
+    category: Vulnerability Management · R Shiny
+    group: vuln
+    type: personal
+    summary: Interactive dashboard of CISA's catalog of vulnerabilities exploited in real attacks, showing which vendors, weaknesses and patch deadlines matter most.
+    tools: [R, Shiny, bslib, plotly, DT, dplyr]
+    metrics:
+      - ["1,766", "exploited vulnerabilities analysed"]
+      - ["291", "vendors"]
+      - ["20%", "linked to ransomware"]
+      - ["45%", "exploited in the year disclosed"]
+    situation: >
+      Tens of thousands of new CVEs are published every year, far more than any team can patch. CISA's Known Exploited
+      Vulnerabilities (KEV) catalog lists the ones confirmed to be exploited in the wild, which makes it one of the
+      most practical signals for deciding what to fix first. But the raw data is hard to read for trends.
+    task: >
+      Turn the KEV catalog into an interactive dashboard that answers vulnerability-management questions: which
+      vendors and weakness types dominate, how quickly flaws get exploited, and how much is linked to ransomware.
+      The project combines my data science and security skills.
+    action:
+      - Built an R Shiny app with Overview, Insights, Explore and About pages, and filters for date, vendor, ransomware use and free-text search that apply across every page.
+      - "Derived new measures: vulnerability age when it was added (year added minus CVE year) and the patch window (due date minus date added)."
+      - Added key findings that recalculate for any filter, a vendor-by-year heatmap, a searchable table linked to the NVD, and CSV export.
+      - Made the app download CISA's live feed at start-up, falling back to a bundled snapshot, and used a colour-blind-safe palette.
+    result:
+      - Of 1,766 entries (to 30 Oct 2026), Microsoft accounts for 22%, with Windows alone at 175.
+      - 45% were exploited in the same year their CVE was assigned, while 16% were more than 5 years old when added. Attackers move fast, and old unpatched systems stay targets.
+      - 20% are linked to ransomware campaigns, and the most common patch deadline is 21 days.
+      - The findings shaped my detection rules. For example, path traversal (CWE-22), one of the most common KEV weaknesses, got its own rule.
+    links: {demo: kev-tracker, github: kev-tracker}
+
+  - slug: soc-analyst-toolkit
+    title: SOC Analyst Toolkit
+    category: Security Tooling · Streamlit
+    group: detection
+    type: personal
+    summary: "A web app that turns everyday analyst tasks into working tools: SQL login investigation, tcpdump triage, IP allow-list updates and Linux permission checks."
+    tools: [Python, Streamlit, pandas, SQLite]
+    metrics:
+      - ["4", "interactive tools"]
+      - ["60 SYN / 0 ACK", "flood correctly flagged"]
+      - ["1", "planted incident to find"]
+    situation: >
+      My course projects showed I could analyse logs and packet captures, but only on paper. A recruiter can't see
+      those skills in action in a PDF, so I wanted something they could click on and try.
+    task: >
+      Combine several exercises into one deployable app that demonstrates core SOC tasks on realistic synthetic data.
+    action:
+      - "Login investigation: filter controls generate SQL live against a synthetic SQLite log database that contains a planted brute-force incident. There is also a read-only box for custom queries."
+      - "tcpdump triage: parses a pasted capture and flags ICMP port-unreachable errors (DNS outages) and SYN floods, by comparing SYN packets with completed handshakes."
+      - "Allow-list updater: validates IP addresses, removes revoked ones and offers the updated file for download."
+      - "Linux permissions: a chmod calculator that converts between symbolic and octal and warns about least-privilege problems."
+      - Restricted the custom SQL box to a single read-only SELECT statement, and tested the app headlessly with Streamlit's AppTest.
+    result:
+      - Recruiters can try four SOC skills from a single link.
+      - The triage tool correctly diagnoses the DNS outage from my network analysis project and flags a SYN flood of 60 SYNs with 0 completed handshakes.
+      - The brute-force alert surfaces the planted incident, 34 failed logins from one IP followed by a successful one, which is exactly the pattern an analyst should escalate.
+    links: {demo: soc-analyst-toolkit, github: soc-analyst-toolkit}
+
+  - slug: botium-toys-security-audit
+    title: "Botium Toys: Internal Security Audit"
+    category: GRC · Compliance Audit
+    group: grc
+    type: case-study
+    summary: Assessed a retailer's security program against 14 controls and the PCI DSS, GDPR and SOC 2 requirements, and wrote a prioritised remediation plan.
+    tools: [NIST CSF, PCI DSS, GDPR, SOC 1/2, Risk assessment]
+    metrics:
+      - ["14", "controls assessed"]
+      - ["9", "controls missing"]
+      - ["3", "compliance frameworks"]
+      - ["8/10", "risk score"]
+    situation: >
+      Botium Toys, a small U.S. toy retailer, was growing its online store, taking card payments and selling to
+      customers in the E.U. Its IT department managed a wide range of assets but had never audited its security program.
+    task: >
+      As the internal auditor, assess current controls and compliance, identify gaps, and recommend what the IT
+      manager should prioritise to reduce risk and meet the PCI DSS, GDPR and SOC 2 requirements.
+    action:
+      - Reviewed the audit scope, asset inventory and risk assessment.
+      - Assessed 14 administrative, technical and physical controls, recording each control's type and the evidence for my answer.
+      - Checked 12 compliance best practices across PCI DSS, GDPR and SOC 1/2.
+      - Mapped every finding to a NIST CSF function and grouped the recommendations into three priority tiers.
+    result:
+      - Found 9 of 14 controls missing, including least privilege, encryption, backups, disaster recovery and intrusion detection, and rated overall risk at 8 out of 10.
+      - Showed that two gaps, access control and encryption, cause most of the PCI DSS and GDPR failures, so fixing them first gives the biggest reduction in risk.
+      - Delivered a report ready for stakeholders, with a prioritised remediation roadmap.
+    links: {report: Botium-Toys-Security-Audit.pdf}
+
+  - slug: dns-traffic-analysis
+    title: "Network Traffic Analysis: DNS Service Outage"
+    category: Network Analysis · tcpdump
+    group: network
+    type: case-study
+    summary: Diagnosed a website outage from a tcpdump capture and traced it to a DNS server that had stopped answering on UDP port 53.
+    tools: [tcpdump, DNS, UDP, ICMP, TCP/IP model]
+    metrics:
+      - ["3 / 3", "DNS queries rejected"]
+      - ["~4 min", "of traffic analysed"]
+      - ["3", "causes ranked"]
+    situation: >
+      Customers of a client reported that www.yummyrecipesforme.com wouldn't load and showed the error "destination
+      port unreachable".
+    task: >
+      Find out which network protocol and service were failing, and document the incident for the security engineers
+      handling the fix.
+    action:
+      - Reproduced the error, then captured the traffic with tcpdump while loading the site.
+      - Matched each outgoing DNS query to its response, and recorded source and destination, ports and timestamps.
+      - Worked through the evidence layer by layer. The ICMP reply showed the DNS host was reachable, while the port-unreachable code pointed to a failed service.
+      - Ranked the likely causes and escalated with concrete next steps.
+    result:
+      - "Root cause: the DNS server at 203.0.113.2 was up, but no service was listening on UDP port 53. All three queries over about four minutes got an ICMP port-unreachable reply, so the website itself was probably fine."
+      - Recommended checking and restarting the DNS service, reviewing firewall changes, adding a secondary DNS server, and monitoring DNS availability.
+    links: {report: DNS-Network-Traffic-Analysis.pdf}
+
+  - slug: syn-flood-dos-incident
+    title: "Incident Report: SYN Flood DoS Attack"
+    category: Incident Response · Network
+    group: network
+    type: case-study
+    summary: Identified a SYN flood denial-of-service attack from a packet capture, explained it to management and recommended mitigations.
+    tools: [Wireshark, TCP three-way handshake, DoS mitigation]
+    metrics:
+      - ["1", "attacking source IP"]
+      - ["DoS", "classified (not DDoS)"]
+      - ["5", "mitigations recommended"]
+    situation: >
+      A travel agency's sales website started timing out for employees, and a monitoring alert fired. A packet
+      capture showed a huge volume of TCP SYN requests from one unfamiliar IP address.
+    task: >
+      Identify the attack, explain how it broke the website in terms a manager can act on, and recommend how to stop
+      it from happening again.
+    action:
+      - Analysed the capture and classified the event as a SYN flood. Because the traffic came from a single source, it was a DoS attack, not a DDoS.
+      - Explained the TCP three-way handshake and how half-open connections fill up the server's backlog until legitimate visitors are dropped.
+      - Assessed the business impact on employees serving customers.
+      - Evaluated the immediate response (blocking the IP) and explained why it's only a stopgap when source addresses can be spoofed.
+    result:
+      - Produced a clear incident report for management.
+      - Recommended SYN cookies, per-source rate limiting, an IPS, an upstream DDoS protection service and monitoring thresholds, which fix the problem at the handshake level instead of chasing IP addresses.
+    links: {report: SYN-Flood-DoS-Incident-Report.pdf}
+
+  - slug: network-hardening-risk-assessment
+    title: "Security Risk Assessment: Network Hardening"
+    category: Risk Assessment · Hardening
+    group: grc
+    type: case-study
+    summary: After a data breach at a social media company, assessed four network vulnerabilities and recommended hardening measures based on NIST guidance.
+    tools: [NIST SP 800-63B, Firewall policy, MFA, Defence in depth]
+    metrics:
+      - ["4", "vulnerabilities assessed"]
+      - ["3", "hardening measures"]
+      - ["100%", "of vulnerabilities covered"]
+    situation: >
+      A social media organisation suffered a breach that exposed customers' names and addresses. An inspection found
+      shared passwords, a default database admin password, firewalls without rules, and no multi-factor authentication.
+    task: >
+      Write a security risk assessment that recommends up to three hardening methods and explains how they address
+      each vulnerability.
+    action:
+      - Assessed how each vulnerability could lead to another breach.
+      - Selected password policies, firewall maintenance and multi-factor authentication, and mapped each one to the vulnerabilities it fixes.
+      - "Aligned the password policy with NIST SP 800-63B: favour length over complexity rules, screen out breached passwords, and change passwords only after a compromise, not on a schedule."
+      - Recommended default-deny firewall rules including outbound filtering, and an MFA rollout starting with administrators.
+    result:
+      - All four vulnerabilities are covered by three low-cost measures, with a clear priority order and review schedule.
+      - Showed how layering identity and network controls gives defence in depth.
+    links: {report: Network-Hardening-Risk-Assessment.pdf}
+
+  - slug: website-compromise-brute-force
+    title: "Incident Report: Website Compromise via Brute Force"
+    category: Incident Response · Web
+    group: detection
+    type: case-study
+    summary: Traced a malicious redirect on a recipe website back to a brute-forced admin account, and recommended controls to prevent it from happening again.
+    tools: [tcpdump, Sandbox analysis, HTTP, DNS, Incident reporting]
+    metrics:
+      - ["7-step", "attack chain traced"]
+      - ["1", "root cause: default password"]
+      - ["4", "preventive controls"]
+    situation: >
+      A former employee brute-forced the admin account of yummyrecipesforme.com, which still used a default password.
+      They injected JavaScript that pushed visitors to download a fake browser update, which redirected them to a
+      malicious copy of the site. Customers' computers began running slowly.
+    task: >
+      Investigate the incident, identify the network protocols involved, document what happened and recommend a
+      remediation for brute-force attacks.
+    action:
+      - Reproduced the attack safely in a sandbox while capturing traffic with tcpdump.
+      - Traced the chain through DNS and HTTP, from the legitimate site to the malware download to the redirect to the fake domain.
+      - Identified HTTP as the protocol that delivered the malware, and confirmed that DNS itself was working normally.
+      - Documented how the incident was detected, how it was investigated, its root cause and its impact.
+    result:
+      - "Root cause: a default admin password and no limit on login attempts."
+      - Recommended removing default credentials, adding account lockout or rate limiting, enforcing MFA and alerting on admin logins. Also recommended offboarding procedures, a recovery plan, customer communication and HTTPS.
+      - Deliberately did not recommend forced password rotation, which current NIST guidance advises against.
+    links: {report: Website-Compromise-Incident-Report.pdf}
+
+  - slug: nist-csf-ddos-analysis
+    title: "Incident Analysis: ICMP Flood DDoS with NIST CSF"
+    category: Incident Analysis · NIST CSF
+    group: detection
+    type: case-study
+    summary: Used the NIST Cybersecurity Framework to turn a DDoS attack that took a network down for two hours into a security improvement plan.
+    tools: [NIST CSF 2.0, Incident response, Network security]
+    metrics:
+      - ["2 h", "outage analysed"]
+      - ["5", "CSF functions covered"]
+      - ["1", "DDoS response playbook"]
+    situation: >
+      A multimedia company's internal network went down for two hours when an ICMP flood came in through a firewall
+      that had never been configured. The team blocked ICMP, then added rate limiting, source IP verification,
+      network monitoring and an IDS/IPS.
+    task: >
+      Analyse the incident with the NIST CSF and create a plan to improve the company's network security.
+    action:
+      - Analysed the incident across Identify, Protect, Detect, Respond and Recover.
+      - Identified the real root cause as a process failure, with no configuration baseline or review, not just one bad device.
+      - "Planned improvements for each function: a firewall baseline, change management and network segmentation (Protect); alert thresholds, IPS in prevention mode and a SIEM (Detect); a written DDoS playbook, communication plan and post-incident review (Respond); and tested recovery steps with upstream DDoS mitigation (Recover)."
+      - Noted where CSF 2.0's new Govern function applies, through ownership and approval of configuration changes.
+    result:
+      - Produced a plan that fixes the underlying process, not just the single device.
+      - Showed how to use a framework to turn one incident into lasting improvements.
+    links: {report: NIST-CSF-DDoS-Incident-Analysis.pdf}
+
+  - slug: linux-file-permissions
+    title: "Linux: Securing File Permissions"
+    category: Linux · Least Privilege
+    group: automation
+    type: case-study
+    summary: Audited and corrected file permissions on a research team's Linux directory to enforce least privilege.
+    tools: [Bash, ls, chmod, Linux permissions]
+    metrics:
+      - ["6", "items audited"]
+      - ["3", "permissions corrected"]
+      - ["0", "world-writable files left"]
+    situation: >
+      A research team's project files had permissions that didn't match who should have access, including a file
+      that any user on the system could modify.
+    task: >
+      Check every file and directory, including hidden ones, and correct the permissions to match the
+      organisation's authorisation policy.
+    action:
+      - Listed everything with ls -la, including hidden files, and decoded each 10-character permission string.
+      - Removed write access for other users with chmod o-w project_k.txt.
+      - Made an archived hidden file read-only for its owner and group with chmod u-w,g-w,g+r .project_x.txt (octal 440).
+      - Restricted the drafts directory to its owner with chmod g-x drafts (octal 700), and checked the result after each change.
+    result:
+      - Corrected 3 items so that every permission matches policy, leaving no world-writable files.
+      - Later turned this into a detection rule that alerts when someone makes files world-writable (see Detection-as-Code).
+    links: {report: Linux-File-Permissions.pdf}
+
+  - slug: sql-login-investigation
+    title: "SQL: Filtering Data for Security Investigations"
+    category: SQL · Log Investigation
+    group: automation
+    type: case-study
+    summary: Used SQL filters to investigate suspicious logins and to list exactly which machines needed security updates.
+    tools: [SQL, MariaDB, AND / OR / NOT, LIKE]
+    metrics:
+      - ["6", "targeted queries"]
+      - ["2", "tables investigated"]
+      - ["4", "filter operators"]
+    situation: >
+      An organisation's database held login attempts and employee records. There had been a possible incident after
+      business hours, and several departments needed security updates on their machines.
+    task: >
+      Write SQL queries that pull exactly the records each investigation or update needs, from tables too large to
+      review by hand.
+    action:
+      - Found failed login attempts after 18:00 by combining conditions with AND.
+      - Pulled login attempts on the day of a suspicious event and the day before, using OR.
+      - Excluded an expected country stored in two formats (MEX and MEXICO) using NOT and LIKE 'MEX%'.
+      - Listed machines for targeted patching by department and building, using LIKE 'East%'.
+    result:
+      - Turned large tables into the precise lists the security team needed, in seconds.
+      - Later reused these skills in the SOC Analyst Toolkit and approached them from the attacker's side with a SQL-injection detection rule.
+    links: {report: SQL-Login-Investigation.pdf}
+
+  - slug: python-allow-list-automation
+    title: "Python: Automating an IP Allow-List Update"
+    category: Python · Automation
+    group: automation
+    type: case-study
+    summary: Automated updating an IP allow list in Python, then fixed a hidden bug and added input validation and unit tests.
+    tools: [Python, File I/O, ipaddress, pytest]
+    metrics:
+      - ["17 → 13", "IP addresses after update"]
+      - ["1", "hidden bug fixed"]
+      - ["4", "unit tests"]
+    situation: >
+      Access to restricted content was controlled by an allow list of IP addresses in a text file. Revoked addresses
+      had to be removed by hand, which is slow and easy to get wrong.
+    task: >
+      Write an algorithm that removes revoked addresses automatically and reliably.
+    action:
+      - Read the file, split it into a list, removed each address on the remove list, and wrote the result back.
+      - Found and fixed a subtle bug. Removing items from a list while looping over it makes Python skip elements, which could silently leave revoked addresses in place.
+      - Turned the algorithm into a reusable function that validates IP addresses, uses fast set lookups, keeps the file's header and returns the removed addresses as an audit trail.
+      - Added a command-line script and four pytest tests, including a regression test for the bug.
+    result:
+      - All four revoked addresses were removed (17 → 13), and the tests confirmed it.
+      - Reused the logic as the allow-list tool in the SOC Analyst Toolkit.
+    links: {report: Python-Allow-List-Automation.pdf}

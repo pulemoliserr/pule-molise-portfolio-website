@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity Projects | Pule Molise</title>
+    <meta name="description" content="Cybersecurity portfolio of Pule Molise: detection engineering, cloud security, incident response and GRC." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/" />
+    <meta property="og:title" content="Cybersecurity Projects | Pule Molise" />
+    <meta property="og:description" content="Cybersecurity portfolio of Pule Molise: detection engineering, cloud security, incident response and GRC." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../css/style-switcher.css" />
+    <link rel="stylesheet" href="../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../">Home</a><span>/</span><a href="../#portfolio">Portfolio</a><span>/</span>Cybersecurity</nav>
+          <div class="row">
+            <div class="section-title padd-15"><h2>Cybersecurity Projects</h2></div>
+          </div>
+          <div class="row">
+            <p class="page-intro padd-15">Detection engineering, cloud security, incident response and GRC work. I completed the <strong>Google Cybersecurity Professional Certificate</strong> and the <strong>Google Cloud Cybersecurity Certificate</strong>. The 4 personal projects build on them; the case studies are based on the certificate's scenarios. Every project is written up with the S.T.A.R. method: Situation, Task, Action, Result.</p>
+            <div class="filters padd-15"><button class="active" data-filter="all">All</button><button data-filter="detection">Detection &amp; Response</button><button data-filter="cloud">Cloud Security</button><button data-filter="vuln">Vulnerability Management</button><button data-filter="grc">GRC &amp; Risk</button><button data-filter="network">Network Analysis</button><button data-filter="automation">Scripting &amp; Automation</button></div>
+            <div class="portfolio-item padd-15" data-group="detection">
+              <a href="detection-as-code/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/detection-as-code.jpg" alt="Detection-as-Code: Tested Sigma Rules" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type personal">Personal project</span>
+                    <span class="project-category">Detection Engineering</span>
+                    <h4>Detection-as-Code: Tested Sigma Rules</h4>
+                    <p>16 Sigma detection rules mapped to MITRE ATT&amp;CK, each tested automatically against attack and benign log events.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="cloud">
+              <a href="cloud-security-gcp/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/cloud-security-gcp.jpg" alt="Cloud Security: Hardening a Misconfigured GCP Deployment" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type personal">Personal project</span>
+                    <span class="project-category">Cloud Security · Google Cloud</span>
+                    <h4>Cloud Security: Hardening a Misconfigured GCP Deployment</h4>
+                    <p>A Google Cloud deployment written twice in Terraform, first with 8 common misconfigurations and then hardened. Failed security checks went from 31 to 0.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="vuln">
+              <a href="kev-tracker/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/kev-tracker.jpg" alt="KEV Tracker: Known Exploited Vulnerabilities Dashboard" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type personal">Personal project</span>
+                    <span class="project-category">Vulnerability Management · R Shiny</span>
+                    <h4>KEV Tracker: Known Exploited Vulnerabilities Dashboard</h4>
+                    <p>Interactive dashboard of CISA&#x27;s catalog of vulnerabilities exploited in real attacks, showing which vendors, weaknesses and patch deadlines matter most.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="detection">
+              <a href="soc-analyst-toolkit/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/soc-analyst-toolkit.jpg" alt="SOC Analyst Toolkit" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type personal">Personal project</span>
+                    <span class="project-category">Security Tooling · Streamlit</span>
+                    <h4>SOC Analyst Toolkit</h4>
+                    <p>A web app that turns everyday analyst tasks into working tools: SQL login investigation, tcpdump triage, IP allow-list updates and Linux permission checks.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="grc">
+              <a href="botium-toys-security-audit/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/botium-toys-security-audit.jpg" alt="Botium Toys: Internal Security Audit" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type case-study">Case study</span>
+                    <span class="project-category">GRC · Compliance Audit</span>
+                    <h4>Botium Toys: Internal Security Audit</h4>
+                    <p>Assessed a retailer&#x27;s security program against 14 controls and the PCI DSS, GDPR and SOC 2 requirements, and wrote a prioritised remediation plan.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="network">
+              <a href="dns-traffic-analysis/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/dns-traffic-analysis.jpg" alt="Network Traffic Analysis: DNS Service Outage" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type case-study">Case study</span>
+                    <span class="project-category">Network Analysis · tcpdump</span>
+                    <h4>Network Traffic Analysis: DNS Service Outage</h4>
+                    <p>Diagnosed a website outage from a tcpdump capture and traced it to a DNS server that had stopped answering on UDP port 53.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="network">
+              <a href="syn-flood-dos-incident/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/syn-flood-dos-incident.jpg" alt="Incident Report: SYN Flood DoS Attack" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type case-study">Case study</span>
+                    <span class="project-category">Incident Response · Network</span>
+                    <h4>Incident Report: SYN Flood DoS Attack</h4>
+                    <p>Identified a SYN flood denial-of-service attack from a packet capture, explained it to management and recommended mitigations.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="grc">
+              <a href="network-hardening-risk-assessment/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/network-hardening-risk-assessment.jpg" alt="Security Risk Assessment: Network Hardening" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type case-study">Case study</span>
+                    <span class="project-category">Risk Assessment · Hardening</span>
+                    <h4>Security Risk Assessment: Network Hardening</h4>
+                    <p>After a data breach at a social media company, assessed four network vulnerabilities and recommended hardening measures based on NIST guidance.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="detection">
+              <a href="website-compromise-brute-force/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/website-compromise-brute-force.jpg" alt="Incident Report: Website Compromise via Brute Force" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type case-study">Case study</span>
+                    <span class="project-category">Incident Response · Web</span>
+                    <h4>Incident Report: Website Compromise via Brute Force</h4>
+                    <p>Traced a malicious redirect on a recipe website back to a brute-forced admin account, and recommended controls to prevent it from happening again.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="detection">
+              <a href="nist-csf-ddos-analysis/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/nist-csf-ddos-analysis.jpg" alt="Incident Analysis: ICMP Flood DDoS with NIST CSF" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type case-study">Case study</span>
+                    <span class="project-category">Incident Analysis · NIST CSF</span>
+                    <h4>Incident Analysis: ICMP Flood DDoS with NIST CSF</h4>
+                    <p>Used the NIST Cybersecurity Framework to turn a DDoS attack that took a network down for two hours into a security improvement plan.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="automation">
+              <a href="linux-file-permissions/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/linux-file-permissions.jpg" alt="Linux: Securing File Permissions" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type case-study">Case study</span>
+                    <span class="project-category">Linux · Least Privilege</span>
+                    <h4>Linux: Securing File Permissions</h4>
+                    <p>Audited and corrected file permissions on a research team&#x27;s Linux directory to enforce least privilege.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="automation">
+              <a href="sql-login-investigation/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/sql-login-investigation.jpg" alt="SQL: Filtering Data for Security Investigations" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type case-study">Case study</span>
+                    <span class="project-category">SQL · Log Investigation</span>
+                    <h4>SQL: Filtering Data for Security Investigations</h4>
+                    <p>Used SQL filters to investigate suspicious logins and to list exactly which machines needed security updates.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="automation">
+              <a href="python-allow-list-automation/" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/cybersecurity/python-allow-list-automation.jpg" alt="Python: Automating an IP Allow-List Update" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-type case-study">Case study</span>
+                    <span class="project-category">Python · Automation</span>
+                    <h4>Python: Automating an IP Allow-List Update</h4>
+                    <p>Automated updating an IP allow list in Python, then fixed a hidden bug and added input validation and unit tests.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../js/style-switcher.js"></script>
+    <script src="../cybersecurity/links.js"></script>
+    <script src="../js/pages.js"></script>
+  </body>
+</html>

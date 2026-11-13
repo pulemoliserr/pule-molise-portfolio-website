@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incident Report: Website Compromise via Brute Force | Pule Molise</title>
+    <meta name="description" content="Traced a malicious redirect on a recipe website back to a brute-forced admin account, and recommended controls to prevent it from happening again." />
+    <link rel="canonical" href="https://pulemolise.net/cybersecurity/website-compromise-brute-force/" />
+    <meta property="og:title" content="Incident Report: Website Compromise via Brute Force | Pule Molise" />
+    <meta property="og:description" content="Traced a malicious redirect on a recipe website back to a brute-forced admin account, and recommended controls to prevent it from happening again." />
+    <meta property="og:url" content="https://pulemolise.net/cybersecurity/website-compromise-brute-force/" />
+    <meta property="og:image" content="https://pulemolise.net/images/cybersecurity/website-compromise-brute-force.jpg" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/style-switcher.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a href="../../"><span class="logo-icon"></span></a>
+        </div>
+        <div class="nav-toggler"><span></span></div>
+        <ul class="nav">
+          <li><a href="../../#home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="../../#about"><i class="fa fa-user"></i> About</a></li>
+          <li><a href="../../#services"><i class="fa fa-list"></i> Services</a></li>
+          <li><a href="../../#portfolio" class="active"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+          <li class="sub-nav"><a href="../../data-science/">Data Science</a></li>
+          <li class="sub-nav"><a href="../../cybersecurity/" class="active">Cybersecurity</a></li>
+          <li><a href="../../#contact"><i class="fa fa-comments"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <main class="page-main portfolio">
+        <div class="container">
+          <nav class="breadcrumb"><a href="../../">Home</a><span>/</span><a href="../../#portfolio">Portfolio</a><span>/</span><a href="../">Cybersecurity</a><span>/</span>Incident Report: Website Compromise via Brute Force</nav>
+          <header class="project-header">
+            <span class="project-category">Incident Response · Web</span>
+            <h1>Incident Report: Website Compromise via Brute Force</h1>
+            <p class="lead">Traced a malicious redirect on a recipe website back to a brute-forced admin account, and recommended controls to prevent it from happening again.</p>
+            <div class="badges"><span class="type">Case study · Google Cybersecurity Professional Certificate</span><span>tcpdump</span><span>Sandbox analysis</span><span>HTTP</span><span>DNS</span><span>Incident reporting</span></div>
+            <div class="project-actions"><a class="btn" href="../files/Website-Compromise-Incident-Report.pdf" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i>Read the full report</a></div>
+          </header>
+          <div class="project-hero"><img src="../../images/cybersecurity/website-compromise-brute-force.jpg" alt="Incident Report: Website Compromise via Brute Force" /></div>
+          <div class="metrics"><div class="metric"><div class="value">7-step</div><div class="label">attack chain traced</div></div><div class="metric"><div class="value">1</div><div class="label">root cause: default password</div></div><div class="metric"><div class="value">4</div><div class="label">preventive controls</div></div></div>
+          <article class="star">
+            <div class="star-block">
+              <div class="star-letter">S</div>
+              <div class="star-content"><h2>Situation</h2><p>A former employee brute-forced the admin account of yummyrecipesforme.com, which still used a default password. They injected JavaScript that pushed visitors to download a fake browser update, which redirected them to a malicious copy of the site. Customers&#x27; computers began running slowly.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">T</div>
+              <div class="star-content"><h2>Task</h2><p>Investigate the incident, identify the network protocols involved, document what happened and recommend a remediation for brute-force attacks.</p></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">A</div>
+              <div class="star-content"><h2>Action</h2><ul><li>Reproduced the attack safely in a sandbox while capturing traffic with tcpdump.</li><li>Traced the chain through DNS and HTTP, from the legitimate site to the malware download to the redirect to the fake domain.</li><li>Identified HTTP as the protocol that delivered the malware, and confirmed that DNS itself was working normally.</li><li>Documented how the incident was detected, how it was investigated, its root cause and its impact.</li></ul></div>
+            </div>
+            <div class="star-block">
+              <div class="star-letter">R</div>
+              <div class="star-content"><h2>Result</h2><ul><li>Root cause: a default admin password and no limit on login attempts.</li><li>Recommended removing default credentials, adding account lockout or rate limiting, enforcing MFA and alerting on admin logins. Also recommended offboarding procedures, a recovery plan, customer communication and HTTPS.</li><li>Deliberately did not recommend forced password rotation, which current NIST guidance advises against.</li></ul></div>
+            </div>
+          </article>
+          <nav class="project-nav"><a class="prev" href="../network-hardening-risk-assessment/"><small>&larr; Previous</small>Security Risk Assessment: Network Hardening</a><a class="next" href="../nist-csf-ddos-analysis/"><small>Next &rarr;</small>Incident Analysis: ICMP Flood DDoS with NIST CSF</a></nav>
+        </div>
+      </main>
+    </div>
+
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+      <div class="day-night s-icon"><i class="fas"></i></div>
+      <h4>Theme Colors</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('#ec1839')"></span>
+        <span class="color-2" onclick="setActiveStyle('#fa5b0f')"></span>
+        <span class="color-3" onclick="setActiveStyle('#37b182')"></span>
+        <span class="color-4" onclick="setActiveStyle('#1854b4')"></span>
+        <span class="color-5" onclick="setActiveStyle('#f021b2')"></span>
+      </div>
+    </div>
+
+    <script src="../../js/style-switcher.js"></script>
+    <script src="../../cybersecurity/links.js"></script>
+    <script src="../../js/pages.js"></script>
+  </body>
+</html>
