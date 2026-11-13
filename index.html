@@ -380,7 +380,9 @@
             <!-- ====== Contact Form ====== -->
             <div class="row">
               <div class="contact-form padd-15">
-                <form action="https://formspree.io/f/your-form-id" method="POST">
+                <form id="contact-form" action="https://formspree.io/f/moedjlpg" method="POST">
+                  <!-- spam trap: real visitors never see or fill this field -->
+                  <input type="text" name="_gotcha" style="display: none" tabindex="-1" autocomplete="off" />
                   <div class="row">
                     <div class="form-item col-6 padd-15">
                       <div class="form-group">
@@ -414,6 +416,7 @@
                   <div class="row">
                     <div class="form-item col-12 padd-15">
                       <button type="submit" class="btn">Send Message</button>
+                      <p class="form-status" role="status" aria-live="polite"></p>
                     </div>
                   </div>
                 </form>
@@ -456,5 +459,6 @@
     ></script>
     <script src="js/script.js"></script>
     <script src="js/style-switcher.js"></script>
+    <script src="js/contact.js"></script>
   </body>
 </html>
