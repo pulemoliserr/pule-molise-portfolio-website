@@ -14,8 +14,9 @@
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     const data = new FormData(form);
-    // use the visitor's subject as the email subject
-    data.append('_subject', 'Portfolio: ' + (data.get('subject') || 'New message'));
+    // Formspree uses the "subject" field as the email subject: prefix it so
+    // portfolio messages are easy to spot in the inbox
+    data.set('subject', 'Portfolio: ' + (data.get('subject') || 'New message'));
 
     button.disabled = true;
     button.textContent = 'Sending...';
