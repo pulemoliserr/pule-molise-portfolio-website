@@ -8,7 +8,7 @@ window.PROJECT_LINKS = {
     'detection-as-code': 'https://github.com/pulemoliserr/detection-as-code',
     'cloud-security-gcp': 'https://github.com/pulemoliserr/cloud-security-gcp',
     'kev-tracker': 'https://github.com/pulemoliserr/kev-tracker-shiny',
-    'soc-analyst-toolkit': '',    // e.g. https://github.com/pulemoliserr/soc-analyst-toolkit
+    'soc-analyst-toolkit': 'https://github.com/pulemoliserr/soc-toolkit-streamlit',
   },
   demo: {
     'kev-tracker': 'https://sqc2ym-pule-molise.shinyapps.io/kev-tracker-shiny/',
