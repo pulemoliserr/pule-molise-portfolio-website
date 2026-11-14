@@ -128,6 +128,10 @@ document.querySelectorAll('[data-section-link]').forEach(function (link) {
       }
       target.classList.add('active');
       showSection(target);
+      // close the mobile menu if the link was inside it (e.g. the logo)
+      if (aside.classList.contains('open')) {
+        asideSectionTogglerBtn();
+      }
     }
   });
 });
