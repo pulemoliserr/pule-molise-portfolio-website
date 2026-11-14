@@ -227,9 +227,55 @@ def build_sitemap(projects):
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 
 
+# ------------------------------------------------------- role-based sections
+def start_here(cfg, projects, href):
+    """'Short on time? Start with...' strip naming the flagship projects."""
+    by_slug = {p["slug"]: p for p in projects}
+    items = []
+    for pick in cfg.get("start_here", []):
+        p = by_slug[pick["slug"]]
+        h, ext = href(p)
+        target = ' target="_blank" rel="noopener"' if ext else ""
+        items.append(f'<li><a href="{h}"{target}>{e(p["title"])}</a><span>{e(pick["why"])}</span></li>')
+    if not items:
+        return ""
+    return ('            <div class="start-here padd-15"><div class="start-here-inner">'
+            '<p class="start-here-label"><i class="fa fa-bolt"></i> Short on time? Start with these</p>'
+            f'<ol>{"".join(items)}</ol></div></div>')
+
+
+def project_sections(cfg, projects, card_fn):
+    """Jump-to chips plus one section per group, in the order the groups are listed in the YAML."""
+    used = [g for g in cfg["groups"] if any(p["group"] == g for p in projects)]
+    chips = "".join(
+        f'<a href="#{g}">{e(cfg["groups"][g]["title"])} <span>{sum(p["group"] == g for p in projects)}</span></a>'
+        for g in used)
+    out = ['            <nav class="jump-nav padd-15" aria-label="Project sections"><span class="jump-label">Jump to</span>'
+           + chips + "</nav>",
+           "          </div>"]
+    for g in used:
+        s = cfg["groups"][g]
+        items = [p for p in projects if p["group"] == g]
+        roles = "".join(f"<li>{e(r)}</li>" for r in s["roles"])
+        out += [
+            f'          <section class="project-section" id="{g}">',
+            '            <div class="row">',
+            '              <header class="project-section-head padd-15">',
+            f'                <h3>{e(s["title"])} <span class="count">{len(items)} project{"s" if len(items) != 1 else ""}</span></h3>',
+            f'                <p>{e(s["blurb"])}</p>',
+            f'                <ul class="roles" aria-label="Relevant roles"><li class="roles-label">Relevant for</li>{roles}</ul>',
+            "              </header>",
+            "\n".join(card_fn(p) for p in items),
+            "            </div>",
+            "          </section>",
+        ]
+    out.append('          <div class="row">')
+    return "\n".join(out)
+
+
 # --------------------------------------------------------------- data science
 def ds_card(p):
-    return f"""            <div class="portfolio-item padd-15" data-group="{p['group']}">
+    return f"""            <div class="portfolio-item padd-15">
               <a href="{p['url']}" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -247,9 +293,6 @@ def ds_card(p):
 
 def build_data_science(ds, certs):
     projects = ds["projects"]
-    used = [g for g in ds["groups"] if any(p["group"] == g for p in projects)]
-    filters = ['<button class="active" data-filter="all">All</button>'] + [
-        f'<button data-filter="{g}">{e(ds["groups"][g])}</button>' for g in used]
     body = "\n".join([
         breadcrumb(1, ("Data Science", None)),
         section_title("Data Science Projects"),
@@ -257,8 +300,8 @@ def build_data_science(ds, certs):
         f'            <p class="page-intro padd-15">{len(projects)} projects in machine learning, data engineering, '
         'GenAI and business analytics. Each card opens the full write-up, with links to the live app and code, on my '
         '<a href="https://www.datascienceportfol.io/pulemoliserr" target="_blank" rel="noopener">datascienceportfol.io</a> profile.</p>',
-        '            <div class="filters padd-15">' + "".join(filters) + "</div>",
-        "\n".join(ds_card(p) for p in projects),
+        start_here(ds, projects, lambda p: (p["url"], True)),
+        project_sections(ds, projects, ds_card),
         "          </div>",
         related_certs(certs, "data-science", 1),
     ])
@@ -275,7 +318,7 @@ TYPE_LABEL = {"personal": "Personal project", "case-study": "Case study"}
 
 
 def card(p):
-    return f"""            <div class="portfolio-item padd-15" data-group="{p['group']}">
+    return f"""            <div class="portfolio-item padd-15">
               <a href="{p['slug']}/" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -294,9 +337,6 @@ def card(p):
 
 def build_cyber_index(data, certs):
     projects = data["projects"]
-    used = [g for g in data["groups"] if any(p["group"] == g for p in projects)]
-    filters = ['<button class="active" data-filter="all">All</button>'] + [
-        f'<button data-filter="{g}">{e(data["groups"][g])}</button>' for g in used]
     n_personal = sum(p["type"] == "personal" for p in projects)
     body = "\n".join([
         breadcrumb(1, ("Cybersecurity", None)),
@@ -307,8 +347,8 @@ def build_cyber_index(data, certs):
         '<strong>Google Cloud Cybersecurity Certificate</strong>. '
         f'The {n_personal} personal projects build on them; the case studies are based on the certificate\'s scenarios. '
         'Every project is written up with the S.T.A.R. method: Situation, Task, Action, Result.</p>',
-        '            <div class="filters padd-15">' + "".join(filters) + "</div>",
-        "\n".join(card(p) for p in projects),
+        start_here(data, projects, lambda p: (f"{p['slug']}/", False)),
+        project_sections(data, projects, card),
         "          </div>",
         related_certs(certs, "cybersecurity", 1),
     ])
@@ -379,6 +419,15 @@ def build_project(p, prev, nxt):
     out.write_text(page)
 
 
+def check_sections(cfg, projects, name):
+    for key, s in cfg["groups"].items():
+        assert isinstance(s, dict) and {"title", "blurb", "roles"} <= set(s), (
+            f"{name}: section '{key}' needs title, blurb and roles")
+    slugs = {p["slug"] for p in projects}
+    for pick in cfg.get("start_here", []):
+        assert pick["slug"] in slugs, f"{name}: start_here names unknown project {pick['slug']}"
+
+
 def main():
     data = yaml.safe_load((TOOLS / "cybersecurity-projects.yml").read_text())
     projects = data["projects"]
@@ -395,6 +444,7 @@ def main():
             f = p.get("links", {}).get(key)
             assert not f or (ROOT / "cybersecurity" / "files" / f).exists(), f"missing file {f}"
         assert (ROOT / "images" / "cybersecurity" / f"{p['slug']}.jpg").exists(), f"missing thumbnail for {p['slug']}"
+    check_sections(data, projects, "cybersecurity-projects.yml")
     certs = yaml.safe_load((TOOLS / "certifications.yml").read_text())
     for c in certs["certifications"]:
         assert c["group"] in certs["groups"], f"{c['slug']}: unknown group {c['group']}"
@@ -408,6 +458,7 @@ def main():
         assert p["group"] in ds["groups"], f"{p['slug']}: unknown group {p['group']}"
         assert (ROOT / "images" / "data-science" / f"{p['slug']}.jpg").exists(), f"missing thumbnail for {p['slug']}"
         assert p["url"].startswith("https://"), f"{p['slug']}: url must start with https://"
+    check_sections(ds, ds["projects"], "data-science-projects.yml")
     build_data_science(ds, certs)
     build_cyber_index(data, certs)
     for i, p in enumerate(projects):

@@ -24,6 +24,19 @@ The Portfolio tab on the home page links to two branch pages:
 If YAML text contains `: ` (a colon followed by a space), wrap the whole line in double quotes. The build
 script stops with a clear message if you forget.
 
+## Sections, roles and "Start here" picks
+
+Both pages group projects into role-based sections (for example "Data Engineering & Pipelines" or
+"Incident Response & Network Analysis"), so a recruiter can go straight to the work that fits the job.
+
+- `groups` at the top of each YAML file defines the sections, **in the order they appear**. Each has a `title`,
+  a one-line `blurb` and the `roles` it is relevant to (use the job titles recruiters search for).
+- Each project's `group` field puts it in a section. Within a section, projects appear in file order.
+- `start_here` lists the three flagship projects shown in the "Short on time? Start with these" box, each with a
+  short `why`.
+
+The "Jump to" chips and section counts update automatically when you rebuild.
+
 ## Add GitHub and live-demo links
 
 No rebuild needed: paste the URLs into `cybersecurity/links.js`. Each "View code" or "Live demo" button
