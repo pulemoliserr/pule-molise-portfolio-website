@@ -650,3 +650,20 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Site-wide fixes ---------- */
+/* form fields use the site font instead of the browser default */
+.contact .contact-form .form-control {
+  font-family: inherit;
+}
+
+/* GitHub link in the contact info */
+.contact .contact-info-item p a {
+  color: var(--text-black-700);
+  border-bottom: 1px solid var(--skin-color);
+}
+
+.contact .contact-info-item .icon .fab {
+  font-size: 25px;
+  color: var(--skin-color);
+}

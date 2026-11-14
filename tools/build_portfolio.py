@@ -2,6 +2,7 @@
 
 Generates:
   index.html (Certifications section)  from tools/certifications.yml
+  404.html, sitemap.xml, robots.txt
   data-science/index.html            from tools/data-science-cards.html
   cybersecurity/index.html           from tools/cybersecurity-projects.yml
   cybersecurity/<slug>/index.html    one S.T.A.R. page per cybersecurity project
@@ -37,6 +38,8 @@ def shell(depth, active, title, description, canonical, body, extra_head=""):
     <meta property="og:title" content="{e(title)}" />
     <meta property="og:description" content="{e(description)}" />
     <meta property="og:url" content="{SITE}{canonical}" />{extra_head}
+    <link rel="icon" type="image/png" href="{up}images/favicon.png" />
+    <link rel="apple-touch-icon" href="{up}images/apple-touch-icon.png" />
     <link rel="stylesheet" href="{up}css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="{up}css/style-switcher.css" />
@@ -188,6 +191,40 @@ def related_certs(certs, key, depth):
             </div>
             <a class="related-all" href="{up}#certifications">See all certifications <i class="fa fa-arrow-right"></i></a>
           </div>"""
+
+
+# ------------------------------------------------------- 404, sitemap, robots
+def build_404():
+    """Custom "page not found" page. Paths are absolute because it can be served at any URL."""
+    body = """          <div class="row">
+            <div class="section-title padd-15"><h2>Page not found</h2></div>
+          </div>
+          <div class="row">
+            <p class="page-intro padd-15">Sorry, this page doesn't exist or has moved. Try one of these instead:</p>
+          </div>
+          <div class="project-actions">
+            <a class="btn" href="/"><i class="fa fa-home"></i>Home</a>
+            <a class="btn btn-outline" href="/data-science/">Data Science projects</a>
+            <a class="btn btn-outline" href="/cybersecurity/">Cybersecurity projects</a>
+          </div>"""
+    page = shell(0, "", "Page not found | Pule Molise", "This page doesn't exist.", "/404.html", body)
+    # depth 0 gives relative paths; make them absolute so the page works at any URL
+    for attr in ('href="', 'src="'):
+        for prefix in ("css/", "js/", "images/", "data-science/", "cybersecurity/", "#"):
+            page = page.replace(attr + prefix, attr + "/" + prefix)
+    page = page.replace('<a href=""><span class="logo-icon">', '<a href="/"><span class="logo-icon">')
+    page = page.replace('<meta name="description"', '<meta name="robots" content="noindex" />\n    <meta name="description"')
+    (ROOT / "404.html").write_text(page)
+
+
+def build_sitemap(projects):
+    urls = ["/", "/data-science/", "/cybersecurity/"] + [f"/cybersecurity/{p['slug']}/" for p in projects]
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    xml += [f"  <url><loc>{SITE}{u}</loc></url>" for u in urls]
+    xml.append("</urlset>")
+    (ROOT / "sitemap.xml").write_text("\n".join(xml) + "\n")
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 
 
 # --------------------------------------------------------------- data science
@@ -343,6 +380,8 @@ def main():
         for f in (ROOT / "certifications" / "files" / f"{c['slug']}.pdf", ROOT / "images" / "certifications" / f"{c['slug']}.jpg"):
             assert f.exists(), f"missing {f.relative_to(ROOT)}"
     inject_certifications(certs)
+    build_404()
+    build_sitemap(projects)
     build_data_science(certs)
     build_cyber_index(data, certs)
     for i, p in enumerate(projects):

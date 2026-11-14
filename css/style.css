@@ -391,7 +391,9 @@ h3.my-profession {
 .home .home-img img {
   margin: auto;
   border-radius: 5px;
-  height: 400px;
+  max-height: 400px; /* fixed height overflowed the column on laptop screens */
+  max-width: 100%;
+  height: auto;
 }
 
 /* ===== About Section ===== */
