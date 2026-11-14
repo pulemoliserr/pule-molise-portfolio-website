@@ -4,7 +4,7 @@ The Portfolio tab on the home page links to two branch pages:
 
 | URL | Built from |
 |---|---|
-| `/data-science/` | `tools/data-science-projects.yml` (16 short cards linking to datascienceportfol.io) |
+| `/data-science/` | `tools/data-science-projects.yml` (short cards linking to datascienceportfol.io) |
 | `/cybersecurity/` | `tools/cybersecurity-projects.yml` |
 | `/cybersecurity/<slug>/` | one S.T.A.R. page per project in the same YAML file |
 
@@ -31,7 +31,7 @@ stays hidden until its URL is filled in.
 
 ## Update the project counts on the home page
 
-The branch cards on the home page (`index.html`, Portfolio section) show "16 projects" and "13 projects".
+The branch cards on the home page (`index.html`, Portfolio section) show "17 projects" and "13 projects".
 Update those numbers by hand when you add or remove projects.
 
 ## Certifications

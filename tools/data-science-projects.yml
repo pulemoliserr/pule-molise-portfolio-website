@@ -15,6 +15,13 @@ groups:
   business: Business Analytics & Strategy
 
 projects:
+  - slug: ecommerce-medallion-databricks
+    title: "Scalable E-Commerce Analytics: Medallion Architecture on Databricks"
+    category: Data Engineering · Databricks · PySpark · Delta Lake
+    group: engineering
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/17
+    summary: Bronze-to-Gold PySpark pipeline for 541,909 retail transactions, reconciling £9,726,006.95 net revenue with zero variance.
+
   - slug: flight-analytics-pipeline
     title: End-to-End Flight Analytics Pipeline
     category: Data Engineering · Airflow · Snowflake · dbt
