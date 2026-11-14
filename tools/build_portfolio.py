@@ -428,6 +428,24 @@ def check_sections(cfg, projects, name):
         assert pick["slug"] in slugs, f"{name}: start_here names unknown project {pick['slug']}"
 
 
+def version_assets():
+    """Add ?v=<content hash> to local CSS/JS links so browsers fetch new styles after each update
+    instead of using an old cached copy. Rewrites only those attributes, so CRLF files keep their line endings."""
+    import hashlib
+    import re
+    pat = re.compile(r'((?:href|src)=")((?:\.\./)*)((?:css|js|cybersecurity)/[\w.-]+\.(?:css|js))(?:\?v=\w+)?"')
+
+    def repl(m):
+        h = hashlib.sha1((ROOT / m.group(3)).read_bytes()).hexdigest()[:8]
+        return f'{m.group(1)}{m.group(2)}{m.group(3)}?v={h}"'
+
+    pages = [ROOT / "index.html", ROOT / "404.html", ROOT / "data-science" / "index.html",
+             *sorted((ROOT / "cybersecurity").glob("**/index.html"))]
+    for page in pages:
+        raw = page.read_bytes().decode()
+        page.write_bytes(pat.sub(repl, raw).encode())
+
+
 def main():
     data = yaml.safe_load((TOOLS / "cybersecurity-projects.yml").read_text())
     projects = data["projects"]
@@ -463,6 +481,7 @@ def main():
     build_cyber_index(data, certs)
     for i, p in enumerate(projects):
         build_project(p, projects[i - 1] if i else None, projects[i + 1] if i + 1 < len(projects) else None)
+    version_assets()
     print(f"Built certifications ({len(certs['certifications'])}), data-science/ ({len(ds['projects'])}), cybersecurity/ "
           f"and {len(projects)} project pages.")
 
