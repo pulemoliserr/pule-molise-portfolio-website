@@ -4,13 +4,14 @@ The Portfolio tab on the home page links to two branch pages:
 
 | URL | Built from |
 |---|---|
-| `/data-science/` | `tools/data-science-cards.html` (the six original cards, unchanged) |
+| `/data-science/` | `tools/data-science-projects.yml` (16 short cards linking to datascienceportfol.io) |
 | `/cybersecurity/` | `tools/cybersecurity-projects.yml` |
 | `/cybersecurity/<slug>/` | one S.T.A.R. page per project in the same YAML file |
 
 ## Change text or add a project
 
-1. Edit `tools/cybersecurity-projects.yml` (or `tools/data-science-cards.html`).
+1. Edit `tools/cybersecurity-projects.yml` (or `tools/data-science-projects.yml`).
+   For a new data-science project, add an `800×576` thumbnail at `images/data-science/<slug>.jpg`.
    For a new cybersecurity project, add a `1000×720` thumbnail at `images/cybersecurity/<slug>.jpg`,
    and put any PDF report in `cybersecurity/files/`.
 2. Rebuild the pages:
@@ -30,7 +31,7 @@ stays hidden until its URL is filled in.
 
 ## Update the project counts on the home page
 
-The branch cards on the home page (`index.html`, Portfolio section) show "6 projects" and "13 projects".
+The branch cards on the home page (`index.html`, Portfolio section) show "16 projects" and "13 projects".
 Update those numbers by hand when you add or remove projects.
 
 ## Certifications

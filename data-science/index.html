@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Science Projects | Pule Molise</title>
-    <meta name="description" content="Data science and machine learning projects by Pule Molise." />
+    <meta name="description" content="16 data science, machine learning and data engineering projects by Pule Molise." />
     <link rel="canonical" href="https://pulemolise.net/data-science/" />
     <meta property="og:title" content="Data Science Projects | Pule Molise" />
-    <meta property="og:description" content="Data science and machine learning projects by Pule Molise." />
+    <meta property="og:description" content="16 data science, machine learning and data engineering projects by Pule Molise." />
     <meta property="og:url" content="https://pulemolise.net/data-science/" />
     <link rel="icon" type="image/png" href="../images/favicon.png" />
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
@@ -42,103 +42,232 @@
             <div class="section-title padd-15"><h2>Data Science Projects</h2></div>
           </div>
           <div class="row">
-            <p class="page-intro padd-15">Machine learning, analytics and data engineering projects. Each card opens the full project on my <a href="https://www.datascienceportfol.io/pulemoliserr" target="_blank" rel="noopener">datascienceportfol.io</a> profile.</p>
-
-              <!-- Portfolio Item 1 -->
-              <div class="portfolio-item padd-15">
-                <a href="https://www.datascienceportfol.io/pulemoliserr/projects/13" target="_blank" class="portfolio-link">
-                  <div class="portfolio-item-inner shadow-dark">
-                    <div class="portfolio-img">
-                      <img src="../images/portfolio/portfolio-1.jpg" alt="Flight Analytics Pipeline" />
-                    </div>
-                    <div class="portfolio-info padd-15">
-                      <span class="project-category">ETL & Data Engineering</span>
-                      <h4>Flight Analytics Pipeline</h4>
-                      <p>Data extraction, transformation, and analytical pipeline processing flight telematics and operational datasets.</p>
-                    </div>
+            <p class="page-intro padd-15">16 projects in machine learning, data engineering, GenAI and business analytics. Each card opens the full write-up, with links to the live app and code, on my <a href="https://www.datascienceportfol.io/pulemoliserr" target="_blank" rel="noopener">datascienceportfol.io</a> profile.</p>
+            <div class="filters padd-15"><button class="active" data-filter="all">All</button><button data-filter="engineering">Data Engineering</button><button data-filter="ml">Machine Learning</button><button data-filter="genai">GenAI &amp; Automation</button><button data-filter="business">Business Analytics &amp; Strategy</button></div>
+            <div class="portfolio-item padd-15" data-group="engineering">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/13" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/flight-analytics-pipeline.jpg" alt="End-to-End Flight Analytics Pipeline" loading="lazy" />
                   </div>
-                </a>
-              </div>
-
-              <!-- Portfolio Item 2 -->
-              <div class="portfolio-item padd-15">
-                <a href="https://www.datascienceportfol.io/pulemoliserr/projects/5" target="_blank" class="portfolio-link">
-                  <div class="portfolio-item-inner shadow-dark">
-                    <div class="portfolio-img">
-                      <img src="../images/portfolio/portfolio-2.jpg" alt="OBETA Warehouse Infrastructure & ETL" />
-                    </div>
-                    <div class="portfolio-info padd-15">
-                      <span class="project-category">Data Architecture & ETL</span>
-                      <h4>OBETA Warehouse Infrastructure & ETL</h4>
-                      <p>Scalable relational database architecture, chunked batch data ingestion, and performance-optimized SQL analytics.</p>
-                    </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Data Engineering · Airflow · Snowflake · dbt</span>
+                    <h4>End-to-End Flight Analytics Pipeline</h4>
+                    <p>Airflow ingests OpenSky flight data into Snowflake; dbt builds Bronze, Silver and Gold layers behind a Streamlit dashboard.</p>
                   </div>
-                </a>
-              </div>
-
-              <!-- Portfolio Item 3 -->
-              <div class="portfolio-item padd-15">
-                <a href="https://www.datascienceportfol.io/pulemoliserr/projects/2" target="_blank" class="portfolio-link">
-                  <div class="portfolio-item-inner shadow-dark">
-                    <div class="portfolio-img">
-                      <img src="../images/portfolio/portfolio-3.jpg" alt="Credit Default Risk Classification Engine" />
-                    </div>
-                    <div class="portfolio-info padd-15">
-                      <span class="project-category">Machine Learning & Credit Risk</span>
-                      <h4>Credit Default Risk Classification Engine</h4>
-                      <p>Supervised machine learning scoring system evaluating creditworthiness and probability of default.</p>
-                    </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="genai">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/16" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/frontline-rag-assistant.jpg" alt="Frontline Assistant: On-Premise Rail RAG" loading="lazy" />
                   </div>
-                </a>
-              </div>
-
-              <!-- Portfolio Item 4 -->
-              <div class="portfolio-item padd-15">
-                <a href="https://www.datascienceportfol.io/pulemoliserr/projects/3" target="_blank" class="portfolio-link">
-                  <div class="portfolio-item-inner shadow-dark">
-                    <div class="portfolio-img">
-                      <img src="../images/portfolio/portfolio-4.jpg" alt="Semiconductor Wafer Defect Prediction" />
-                    </div>
-                    <div class="portfolio-info padd-15">
-                      <span class="project-category">Predictive Analytics & Anomaly Detection</span>
-                      <h4>Semiconductor Wafer Defect Prediction</h4>
-                      <p>Manufacturing sensor analytics pipeline classifying semiconductor defect patterns for quality control.</p>
-                    </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">GenAI · RAG · Local LLM</span>
+                    <h4>Frontline Assistant: On-Premise Rail RAG</h4>
+                    <p>On-premise assistant answering rail policy questions with citations, using a local Llama 3.1 8B model. 92% Hit@3.</p>
                   </div>
-                </a>
-              </div>
-
-              <!-- Portfolio Item 5 -->
-              <div class="portfolio-item padd-15">
-                <a href="https://www.datascienceportfol.io/pulemoliserr/projects/4" target="_blank" class="portfolio-link">
-                  <div class="portfolio-item-inner shadow-dark">
-                    <div class="portfolio-img">
-                      <img src="../images/portfolio/portfolio-5.jpg" alt="Google Merchandise Store Multi-Model Engine" />
-                    </div>
-                    <div class="portfolio-info padd-15">
-                      <span class="project-category">Business Intelligence & Predictive Modeling</span>
-                      <h4>Google Merchandise Store Multi-Model Engine</h4>
-                      <p>E-commerce revenue forecasting and customer conversion modeling using ensemble machine learning models.</p>
-                    </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="ml">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/15" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/edgefit-activity-recognition.jpg" alt="EdgeFit: Edge AI Activity Recognition" loading="lazy" />
                   </div>
-                </a>
-              </div>
-
-              <!-- Portfolio Item 6 -->
-              <div class="portfolio-item padd-15">
-                <a href="https://www.datascienceportfol.io/pulemoliserr/projects/11" target="_blank" class="portfolio-link">
-                  <div class="portfolio-item-inner shadow-dark">
-                    <div class="portfolio-img">
-                      <img src="../images/portfolio/portfolio-6.jpg" alt="Automated Audience Insights Engine" />
-                    </div>
-                    <div class="portfolio-info padd-15">
-                      <span class="project-category">Workflow Automation & AI Engineering</span>
-                      <h4>Automated Audience Insights Engine</h4>
-                      <p>n8n automation pipeline integrating LLM APIs and API endpoints for video engagement analytics and strategy generation.</p>
-                    </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Machine Learning · Edge AI</span>
+                    <h4>EdgeFit: Edge AI Activity Recognition</h4>
+                    <p>Recognises human activity from smartphone sensor data on the device, validated on users the model has never seen.</p>
                   </div>
-                </a>
-              </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="business">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/14" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/retail-strategy-roadmap.jpg" alt="Retail Strategy &amp; 100-Day Data Science Roadmap" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Data Strategy · Retail Analytics</span>
+                    <h4>Retail Strategy &amp; 100-Day Data Science Roadmap</h4>
+                    <p>A 100-day roadmap for a supermarket chain in Lesotho, evaluating six initiatives from pricing to market basket analysis.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="engineering">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/5" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/obeta-warehouse-etl.jpg" alt="OBETA Warehouse Infrastructure &amp; ETL" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Data Engineering · Star Schema · ETL</span>
+                    <h4>OBETA Warehouse Infrastructure &amp; ETL</h4>
+                    <p>Star schema and ETL pipeline for 33.8M warehouse transactions (2011–2020), built and tuned under CRISP-DM.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="ml">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/0" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/hr-attrition-analytics.jpg" alt="HR Attrition Analytics &amp; Retention Platform" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">People Analytics · R · XGBoost · SHAP</span>
+                    <h4>HR Attrition Analytics &amp; Retention Platform</h4>
+                    <p>Attrition-risk dashboards in R with XGBoost and SHAP, sizing $2.31M in exposure and overtime as a 2.9x driver.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="ml">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/8" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/waze-churn-prediction.jpg" alt="Waze User Churn Prediction Dashboard" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Machine Learning · R Shiny</span>
+                    <h4>Waze User Churn Prediction Dashboard</h4>
+                    <p>Shiny dashboard flagging users at risk of churning, using Random Forest, gradient boosting and threshold tuning.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="ml">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/2" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/credit-default-risk.jpg" alt="Credit Default Risk Classification Engine" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Machine Learning · Credit Risk</span>
+                    <h4>Credit Default Risk Classification Engine</h4>
+                    <p>Classification model scoring borrower default risk, with ROC-AUC evaluation to set credit approval thresholds.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="ml">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/3" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/secom-fault-detection.jpg" alt="SECOM Semiconductor Fault Detection" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Machine Learning · Anomaly Detection</span>
+                    <h4>SECOM Semiconductor Fault Detection</h4>
+                    <p>Fault detection on high-dimensional manufacturing sensor data, handling missing values and class imbalance.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="ml">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/4" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/google-merchandise-store.jpg" alt="Google Merchandise Store Multi-Model Engine" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Predictive Analytics · E-commerce</span>
+                    <h4>Google Merchandise Store Multi-Model Engine</h4>
+                    <p>Conversion prediction, customer segmentation and revenue forecasting for an online store in one framework.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="ml">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/9" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/tiktok-claim-classification.jpg" alt="TikTok Claim vs. Opinion Classification" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Machine Learning · NLP</span>
+                    <h4>TikTok Claim vs. Opinion Classification</h4>
+                    <p>Classifier that sorts content-moderation queues into claims and opinions, with 99%+ recall on high-risk claims.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="ml">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/10" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/nyc-tlc-driver-yield.jpg" alt="NYC TLC Driver Yield Optimization" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Geospatial Analytics · Streamlit</span>
+                    <h4>NYC TLC Driver Yield Optimization</h4>
+                    <p>3D maps and regression models that recommend high-yield pickup zones to New York taxi drivers.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="business">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/6" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/fpna-dashboard.jpg" alt="Financial Performance &amp; FP&amp;A Dashboard" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Financial Analysis · FP&amp;A</span>
+                    <h4>Financial Performance &amp; FP&amp;A Dashboard</h4>
+                    <p>Interactive dashboards for P&amp;L trends, segment profitability, unit economics and EBITDA margin.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="business">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/7" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/inventory-optimization.jpg" alt="Inventory Optimization &amp; Reorder Analytics" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Operations Analytics · Python</span>
+                    <h4>Inventory Optimization &amp; Reorder Analytics</h4>
+                    <p>EOQ, dynamic safety stock, reorder points and ABC–XYZ analysis to guide stock replenishment decisions.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="genai">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/11" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/youtube-audience-insights.jpg" alt="Automated YouTube Audience Insights Engine" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Workflow Automation · LLM</span>
+                    <h4>Automated YouTube Audience Insights Engine</h4>
+                    <p>An n8n pipeline that turns YouTube comments into video ideas with gpt-4o-mini and logs them to Google Sheets.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15" data-group="genai">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/12" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/ai-resume-screening.jpg" alt="AI-Powered Résumé Screening Pipeline" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Workflow Automation · LLM</span>
+                    <h4>AI-Powered Résumé Screening Pipeline</h4>
+                    <p>An n8n pipeline that screens PDF résumés with an LLM agent and structured JSON output, deployed on Railway.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
           <div class="related-certs">
             <h3>Related certifications</h3>

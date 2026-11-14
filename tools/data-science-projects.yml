@@ -1,0 +1,128 @@
+# Data Science projects shown on /data-science/.
+# Each card is short and links to the full write-up on datascienceportfol.io,
+# which keeps this site light. Edit, then run:  python tools/build_portfolio.py
+#
+# Fields
+#   slug      thumbnail file: images/data-science/<slug>.jpg (800x576)
+#   url       the project's datascienceportfol.io page
+#   group     filter on the page (see `groups`)
+#   summary   one short sentence (about 120 characters)
+
+groups:
+  engineering: Data Engineering
+  ml: Machine Learning
+  genai: GenAI & Automation
+  business: Business Analytics & Strategy
+
+projects:
+  - slug: flight-analytics-pipeline
+    title: End-to-End Flight Analytics Pipeline
+    category: Data Engineering · Airflow · Snowflake · dbt
+    group: engineering
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/13
+    summary: Airflow ingests OpenSky flight data into Snowflake; dbt builds Bronze, Silver and Gold layers behind a Streamlit dashboard.
+
+  - slug: frontline-rag-assistant
+    title: "Frontline Assistant: On-Premise Rail RAG"
+    category: GenAI · RAG · Local LLM
+    group: genai
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/16
+    summary: On-premise assistant answering rail policy questions with citations, using a local Llama 3.1 8B model. 92% Hit@3.
+
+  - slug: edgefit-activity-recognition
+    title: "EdgeFit: Edge AI Activity Recognition"
+    category: Machine Learning · Edge AI
+    group: ml
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/15
+    summary: Recognises human activity from smartphone sensor data on the device, validated on users the model has never seen.
+
+  - slug: retail-strategy-roadmap
+    title: Retail Strategy & 100-Day Data Science Roadmap
+    category: Data Strategy · Retail Analytics
+    group: business
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/14
+    summary: A 100-day roadmap for a supermarket chain in Lesotho, evaluating six initiatives from pricing to market basket analysis.
+
+  - slug: obeta-warehouse-etl
+    title: OBETA Warehouse Infrastructure & ETL
+    category: Data Engineering · Star Schema · ETL
+    group: engineering
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/5
+    summary: Star schema and ETL pipeline for 33.8M warehouse transactions (2011–2020), built and tuned under CRISP-DM.
+
+  - slug: hr-attrition-analytics
+    title: HR Attrition Analytics & Retention Platform
+    category: People Analytics · R · XGBoost · SHAP
+    group: ml
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/0
+    summary: Attrition-risk dashboards in R with XGBoost and SHAP, sizing $2.31M in exposure and overtime as a 2.9x driver.
+
+  - slug: waze-churn-prediction
+    title: Waze User Churn Prediction Dashboard
+    category: Machine Learning · R Shiny
+    group: ml
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/8
+    summary: Shiny dashboard flagging users at risk of churning, using Random Forest, gradient boosting and threshold tuning.
+
+  - slug: credit-default-risk
+    title: Credit Default Risk Classification Engine
+    category: Machine Learning · Credit Risk
+    group: ml
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/2
+    summary: Classification model scoring borrower default risk, with ROC-AUC evaluation to set credit approval thresholds.
+
+  - slug: secom-fault-detection
+    title: SECOM Semiconductor Fault Detection
+    category: Machine Learning · Anomaly Detection
+    group: ml
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/3
+    summary: Fault detection on high-dimensional manufacturing sensor data, handling missing values and class imbalance.
+
+  - slug: google-merchandise-store
+    title: Google Merchandise Store Multi-Model Engine
+    category: Predictive Analytics · E-commerce
+    group: ml
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/4
+    summary: Conversion prediction, customer segmentation and revenue forecasting for an online store in one framework.
+
+  - slug: tiktok-claim-classification
+    title: TikTok Claim vs. Opinion Classification
+    category: Machine Learning · NLP
+    group: ml
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/9
+    summary: Classifier that sorts content-moderation queues into claims and opinions, with 99%+ recall on high-risk claims.
+
+  - slug: nyc-tlc-driver-yield
+    title: NYC TLC Driver Yield Optimization
+    category: Geospatial Analytics · Streamlit
+    group: ml
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/10
+    summary: 3D maps and regression models that recommend high-yield pickup zones to New York taxi drivers.
+
+  - slug: fpna-dashboard
+    title: Financial Performance & FP&A Dashboard
+    category: Financial Analysis · FP&A
+    group: business
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/6
+    summary: Interactive dashboards for P&L trends, segment profitability, unit economics and EBITDA margin.
+
+  - slug: inventory-optimization
+    title: Inventory Optimization & Reorder Analytics
+    category: Operations Analytics · Python
+    group: business
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/7
+    summary: EOQ, dynamic safety stock, reorder points and ABC–XYZ analysis to guide stock replenishment decisions.
+
+  - slug: youtube-audience-insights
+    title: Automated YouTube Audience Insights Engine
+    category: Workflow Automation · LLM
+    group: genai
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/11
+    summary: An n8n pipeline that turns YouTube comments into video ideas with gpt-4o-mini and logs them to Google Sheets.
+
+  - slug: ai-resume-screening
+    title: AI-Powered Résumé Screening Pipeline
+    category: Workflow Automation · LLM
+    group: genai
+    url: https://www.datascienceportfol.io/pulemoliserr/projects/12
+    summary: An n8n pipeline that screens PDF résumés with an LLM agent and structured JSON output, deployed on Railway.
