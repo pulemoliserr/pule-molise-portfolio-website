@@ -5,14 +5,41 @@
 # Fields
 #   slug      thumbnail file: images/data-science/<slug>.jpg (800x576)
 #   url       the project's datascienceportfol.io page
-#   group     filter on the page (see `groups`)
+#   group     section on the page (see `groups`)
 #   summary   one short sentence (about 120 characters)
 
+# Sections are shown in this order, with a heading, a one-line description and the roles they are relevant to.
+# Recruiters scan by role, so keep `roles` to the job titles they search for.
 groups:
-  engineering: Data Engineering
-  ml: Machine Learning
-  genai: GenAI & Automation
-  business: Business Analytics & Strategy
+  engineering:
+    title: Data Engineering & Pipelines
+    blurb: Layered Bronze/Silver/Gold pipelines, orchestration and warehouse design on Databricks, Snowflake and MySQL.
+    roles: [Data Engineer, Analytics Engineer, BI Engineer]
+  ml:
+    title: Machine Learning & Predictive Modelling
+    blurb: Classification, anomaly detection, edge AI and geospatial models, evaluated on held-out data and tuned for the decision they support.
+    roles: [Data Scientist, Machine Learning Engineer]
+  genai:
+    title: GenAI & Automation
+    blurb: A retrieval-augmented assistant that runs on-premise, and LLM workflows that automate screening and research tasks.
+    roles: [AI Engineer, LLM Application Developer, Automation Engineer]
+  customer:
+    title: Customer & People Analytics
+    blurb: Attrition, churn and conversion models turned into dashboards that show teams whom to act on first.
+    roles: [Data Analyst, People Analytics, Product / Marketing Analyst]
+  business:
+    title: Finance, Operations & Strategy
+    blurb: FP&A dashboards, inventory policy and a 100-day data strategy, written for decision-makers.
+    roles: [Business Analyst, FP&A Analyst, Operations Analyst]
+
+# "Short on time? Start with..." picks shown at the top of the page (3 is ideal).
+start_here:
+  - slug: ecommerce-medallion-databricks
+    why: End-to-end Databricks pipeline, revenue reconciled with zero variance
+  - slug: frontline-rag-assistant
+    why: On-premise RAG assistant with cited answers, 92% Hit@3
+  - slug: edgefit-activity-recognition
+    why: On-device ML, validated on users the model has never seen
 
 projects:
   - slug: ecommerce-medallion-databricks
@@ -60,14 +87,14 @@ projects:
   - slug: hr-attrition-analytics
     title: HR Attrition Analytics & Retention Platform
     category: People Analytics · R · XGBoost · SHAP
-    group: ml
+    group: customer
     url: https://www.datascienceportfol.io/pulemoliserr/projects/0
     summary: Attrition-risk dashboards in R with XGBoost and SHAP, sizing $2.31M in exposure and overtime as a 2.9x driver.
 
   - slug: waze-churn-prediction
     title: Waze User Churn Prediction Dashboard
     category: Machine Learning · R Shiny
-    group: ml
+    group: customer
     url: https://www.datascienceportfol.io/pulemoliserr/projects/8
     summary: Shiny dashboard flagging users at risk of churning, using Random Forest, gradient boosting and threshold tuning.
 
@@ -88,7 +115,7 @@ projects:
   - slug: google-merchandise-store
     title: Google Merchandise Store Multi-Model Engine
     category: Predictive Analytics · E-commerce
-    group: ml
+    group: customer
     url: https://www.datascienceportfol.io/pulemoliserr/projects/4
     summary: Conversion prediction, customer segmentation and revenue forecasting for an online store in one framework.
 

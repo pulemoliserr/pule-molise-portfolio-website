@@ -43,8 +43,17 @@
           </div>
           <div class="row">
             <p class="page-intro padd-15">17 projects in machine learning, data engineering, GenAI and business analytics. Each card opens the full write-up, with links to the live app and code, on my <a href="https://www.datascienceportfol.io/pulemoliserr" target="_blank" rel="noopener">datascienceportfol.io</a> profile.</p>
-            <div class="filters padd-15"><button class="active" data-filter="all">All</button><button data-filter="engineering">Data Engineering</button><button data-filter="ml">Machine Learning</button><button data-filter="genai">GenAI &amp; Automation</button><button data-filter="business">Business Analytics &amp; Strategy</button></div>
-            <div class="portfolio-item padd-15" data-group="engineering">
+            <div class="start-here padd-15"><div class="start-here-inner"><p class="start-here-label"><i class="fa fa-bolt"></i> Short on time? Start with these</p><ol><li><a href="https://www.datascienceportfol.io/pulemoliserr/projects/17" target="_blank" rel="noopener">Scalable E-Commerce Analytics: Medallion Architecture on Databricks</a><span>End-to-end Databricks pipeline, revenue reconciled with zero variance</span></li><li><a href="https://www.datascienceportfol.io/pulemoliserr/projects/16" target="_blank" rel="noopener">Frontline Assistant: On-Premise Rail RAG</a><span>On-premise RAG assistant with cited answers, 92% Hit@3</span></li><li><a href="https://www.datascienceportfol.io/pulemoliserr/projects/15" target="_blank" rel="noopener">EdgeFit: Edge AI Activity Recognition</a><span>On-device ML, validated on users the model has never seen</span></li></ol></div></div>
+            <nav class="jump-nav padd-15" aria-label="Project sections"><span class="jump-label">Jump to</span><a href="#engineering">Data Engineering &amp; Pipelines <span>3</span></a><a href="#ml">Machine Learning &amp; Predictive Modelling <span>5</span></a><a href="#genai">GenAI &amp; Automation <span>3</span></a><a href="#customer">Customer &amp; People Analytics <span>3</span></a><a href="#business">Finance, Operations &amp; Strategy <span>3</span></a></nav>
+          </div>
+          <section class="project-section" id="engineering">
+            <div class="row">
+              <header class="project-section-head padd-15">
+                <h3>Data Engineering &amp; Pipelines <span class="count">3 projects</span></h3>
+                <p>Layered Bronze/Silver/Gold pipelines, orchestration and warehouse design on Databricks, Snowflake and MySQL.</p>
+                <ul class="roles" aria-label="Relevant roles"><li class="roles-label">Relevant for</li><li>Data Engineer</li><li>Analytics Engineer</li><li>BI Engineer</li></ul>
+              </header>
+            <div class="portfolio-item padd-15">
               <a href="https://www.datascienceportfol.io/pulemoliserr/projects/17" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -58,7 +67,7 @@
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="engineering">
+            <div class="portfolio-item padd-15">
               <a href="https://www.datascienceportfol.io/pulemoliserr/projects/13" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -72,49 +81,7 @@
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="genai">
-              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/16" target="_blank" rel="noopener" class="portfolio-link">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="../images/data-science/frontline-rag-assistant.jpg" alt="Frontline Assistant: On-Premise Rail RAG" loading="lazy" />
-                  </div>
-                  <div class="portfolio-info padd-15">
-                    <span class="project-category">GenAI · RAG · Local LLM</span>
-                    <h4>Frontline Assistant: On-Premise Rail RAG</h4>
-                    <p>On-premise assistant answering rail policy questions with citations, using a local Llama 3.1 8B model. 92% Hit@3.</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="portfolio-item padd-15" data-group="ml">
-              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/15" target="_blank" rel="noopener" class="portfolio-link">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="../images/data-science/edgefit-activity-recognition.jpg" alt="EdgeFit: Edge AI Activity Recognition" loading="lazy" />
-                  </div>
-                  <div class="portfolio-info padd-15">
-                    <span class="project-category">Machine Learning · Edge AI</span>
-                    <h4>EdgeFit: Edge AI Activity Recognition</h4>
-                    <p>Recognises human activity from smartphone sensor data on the device, validated on users the model has never seen.</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="portfolio-item padd-15" data-group="business">
-              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/14" target="_blank" rel="noopener" class="portfolio-link">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="../images/data-science/retail-strategy-roadmap.jpg" alt="Retail Strategy &amp; 100-Day Data Science Roadmap" loading="lazy" />
-                  </div>
-                  <div class="portfolio-info padd-15">
-                    <span class="project-category">Data Strategy · Retail Analytics</span>
-                    <h4>Retail Strategy &amp; 100-Day Data Science Roadmap</h4>
-                    <p>A 100-day roadmap for a supermarket chain in Lesotho, evaluating six initiatives from pricing to market basket analysis.</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="portfolio-item padd-15" data-group="engineering">
+            <div class="portfolio-item padd-15">
               <a href="https://www.datascienceportfol.io/pulemoliserr/projects/5" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -128,35 +95,30 @@
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="ml">
-              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/0" target="_blank" rel="noopener" class="portfolio-link">
+            </div>
+          </section>
+          <section class="project-section" id="ml">
+            <div class="row">
+              <header class="project-section-head padd-15">
+                <h3>Machine Learning &amp; Predictive Modelling <span class="count">5 projects</span></h3>
+                <p>Classification, anomaly detection, edge AI and geospatial models, evaluated on held-out data and tuned for the decision they support.</p>
+                <ul class="roles" aria-label="Relevant roles"><li class="roles-label">Relevant for</li><li>Data Scientist</li><li>Machine Learning Engineer</li></ul>
+              </header>
+            <div class="portfolio-item padd-15">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/15" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
-                    <img src="../images/data-science/hr-attrition-analytics.jpg" alt="HR Attrition Analytics &amp; Retention Platform" loading="lazy" />
+                    <img src="../images/data-science/edgefit-activity-recognition.jpg" alt="EdgeFit: Edge AI Activity Recognition" loading="lazy" />
                   </div>
                   <div class="portfolio-info padd-15">
-                    <span class="project-category">People Analytics · R · XGBoost · SHAP</span>
-                    <h4>HR Attrition Analytics &amp; Retention Platform</h4>
-                    <p>Attrition-risk dashboards in R with XGBoost and SHAP, sizing $2.31M in exposure and overtime as a 2.9x driver.</p>
+                    <span class="project-category">Machine Learning · Edge AI</span>
+                    <h4>EdgeFit: Edge AI Activity Recognition</h4>
+                    <p>Recognises human activity from smartphone sensor data on the device, validated on users the model has never seen.</p>
                   </div>
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="ml">
-              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/8" target="_blank" rel="noopener" class="portfolio-link">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="../images/data-science/waze-churn-prediction.jpg" alt="Waze User Churn Prediction Dashboard" loading="lazy" />
-                  </div>
-                  <div class="portfolio-info padd-15">
-                    <span class="project-category">Machine Learning · R Shiny</span>
-                    <h4>Waze User Churn Prediction Dashboard</h4>
-                    <p>Shiny dashboard flagging users at risk of churning, using Random Forest, gradient boosting and threshold tuning.</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="portfolio-item padd-15" data-group="ml">
+            <div class="portfolio-item padd-15">
               <a href="https://www.datascienceportfol.io/pulemoliserr/projects/2" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -170,7 +132,7 @@
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="ml">
+            <div class="portfolio-item padd-15">
               <a href="https://www.datascienceportfol.io/pulemoliserr/projects/3" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -184,21 +146,7 @@
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="ml">
-              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/4" target="_blank" rel="noopener" class="portfolio-link">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="../images/data-science/google-merchandise-store.jpg" alt="Google Merchandise Store Multi-Model Engine" loading="lazy" />
-                  </div>
-                  <div class="portfolio-info padd-15">
-                    <span class="project-category">Predictive Analytics · E-commerce</span>
-                    <h4>Google Merchandise Store Multi-Model Engine</h4>
-                    <p>Conversion prediction, customer segmentation and revenue forecasting for an online store in one framework.</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="portfolio-item padd-15" data-group="ml">
+            <div class="portfolio-item padd-15">
               <a href="https://www.datascienceportfol.io/pulemoliserr/projects/9" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -212,7 +160,7 @@
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="ml">
+            <div class="portfolio-item padd-15">
               <a href="https://www.datascienceportfol.io/pulemoliserr/projects/10" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -226,35 +174,30 @@
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="business">
-              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/6" target="_blank" rel="noopener" class="portfolio-link">
+            </div>
+          </section>
+          <section class="project-section" id="genai">
+            <div class="row">
+              <header class="project-section-head padd-15">
+                <h3>GenAI &amp; Automation <span class="count">3 projects</span></h3>
+                <p>A retrieval-augmented assistant that runs on-premise, and LLM workflows that automate screening and research tasks.</p>
+                <ul class="roles" aria-label="Relevant roles"><li class="roles-label">Relevant for</li><li>AI Engineer</li><li>LLM Application Developer</li><li>Automation Engineer</li></ul>
+              </header>
+            <div class="portfolio-item padd-15">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/16" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
-                    <img src="../images/data-science/fpna-dashboard.jpg" alt="Financial Performance &amp; FP&amp;A Dashboard" loading="lazy" />
+                    <img src="../images/data-science/frontline-rag-assistant.jpg" alt="Frontline Assistant: On-Premise Rail RAG" loading="lazy" />
                   </div>
                   <div class="portfolio-info padd-15">
-                    <span class="project-category">Financial Analysis · FP&amp;A</span>
-                    <h4>Financial Performance &amp; FP&amp;A Dashboard</h4>
-                    <p>Interactive dashboards for P&amp;L trends, segment profitability, unit economics and EBITDA margin.</p>
+                    <span class="project-category">GenAI · RAG · Local LLM</span>
+                    <h4>Frontline Assistant: On-Premise Rail RAG</h4>
+                    <p>On-premise assistant answering rail policy questions with citations, using a local Llama 3.1 8B model. 92% Hit@3.</p>
                   </div>
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="business">
-              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/7" target="_blank" rel="noopener" class="portfolio-link">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="../images/data-science/inventory-optimization.jpg" alt="Inventory Optimization &amp; Reorder Analytics" loading="lazy" />
-                  </div>
-                  <div class="portfolio-info padd-15">
-                    <span class="project-category">Operations Analytics · Python</span>
-                    <h4>Inventory Optimization &amp; Reorder Analytics</h4>
-                    <p>EOQ, dynamic safety stock, reorder points and ABC–XYZ analysis to guide stock replenishment decisions.</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="portfolio-item padd-15" data-group="genai">
+            <div class="portfolio-item padd-15">
               <a href="https://www.datascienceportfol.io/pulemoliserr/projects/11" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -268,7 +211,7 @@
                 </div>
               </a>
             </div>
-            <div class="portfolio-item padd-15" data-group="genai">
+            <div class="portfolio-item padd-15">
               <a href="https://www.datascienceportfol.io/pulemoliserr/projects/12" target="_blank" rel="noopener" class="portfolio-link">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -282,6 +225,111 @@
                 </div>
               </a>
             </div>
+            </div>
+          </section>
+          <section class="project-section" id="customer">
+            <div class="row">
+              <header class="project-section-head padd-15">
+                <h3>Customer &amp; People Analytics <span class="count">3 projects</span></h3>
+                <p>Attrition, churn and conversion models turned into dashboards that show teams whom to act on first.</p>
+                <ul class="roles" aria-label="Relevant roles"><li class="roles-label">Relevant for</li><li>Data Analyst</li><li>People Analytics</li><li>Product / Marketing Analyst</li></ul>
+              </header>
+            <div class="portfolio-item padd-15">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/0" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/hr-attrition-analytics.jpg" alt="HR Attrition Analytics &amp; Retention Platform" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">People Analytics · R · XGBoost · SHAP</span>
+                    <h4>HR Attrition Analytics &amp; Retention Platform</h4>
+                    <p>Attrition-risk dashboards in R with XGBoost and SHAP, sizing $2.31M in exposure and overtime as a 2.9x driver.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/8" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/waze-churn-prediction.jpg" alt="Waze User Churn Prediction Dashboard" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Machine Learning · R Shiny</span>
+                    <h4>Waze User Churn Prediction Dashboard</h4>
+                    <p>Shiny dashboard flagging users at risk of churning, using Random Forest, gradient boosting and threshold tuning.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/4" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/google-merchandise-store.jpg" alt="Google Merchandise Store Multi-Model Engine" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Predictive Analytics · E-commerce</span>
+                    <h4>Google Merchandise Store Multi-Model Engine</h4>
+                    <p>Conversion prediction, customer segmentation and revenue forecasting for an online store in one framework.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            </div>
+          </section>
+          <section class="project-section" id="business">
+            <div class="row">
+              <header class="project-section-head padd-15">
+                <h3>Finance, Operations &amp; Strategy <span class="count">3 projects</span></h3>
+                <p>FP&amp;A dashboards, inventory policy and a 100-day data strategy, written for decision-makers.</p>
+                <ul class="roles" aria-label="Relevant roles"><li class="roles-label">Relevant for</li><li>Business Analyst</li><li>FP&amp;A Analyst</li><li>Operations Analyst</li></ul>
+              </header>
+            <div class="portfolio-item padd-15">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/14" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/retail-strategy-roadmap.jpg" alt="Retail Strategy &amp; 100-Day Data Science Roadmap" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Data Strategy · Retail Analytics</span>
+                    <h4>Retail Strategy &amp; 100-Day Data Science Roadmap</h4>
+                    <p>A 100-day roadmap for a supermarket chain in Lesotho, evaluating six initiatives from pricing to market basket analysis.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/6" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/fpna-dashboard.jpg" alt="Financial Performance &amp; FP&amp;A Dashboard" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Financial Analysis · FP&amp;A</span>
+                    <h4>Financial Performance &amp; FP&amp;A Dashboard</h4>
+                    <p>Interactive dashboards for P&amp;L trends, segment profitability, unit economics and EBITDA margin.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item padd-15">
+              <a href="https://www.datascienceportfol.io/pulemoliserr/projects/7" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/inventory-optimization.jpg" alt="Inventory Optimization &amp; Reorder Analytics" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">Operations Analytics · Python</span>
+                    <h4>Inventory Optimization &amp; Reorder Analytics</h4>
+                    <p>EOQ, dynamic safety stock, reorder points and ABC–XYZ analysis to guide stock replenishment decisions.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            </div>
+          </section>
+          <div class="row">
           </div>
           <div class="related-certs">
             <h3>Related certifications</h3>

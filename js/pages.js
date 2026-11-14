@@ -13,22 +13,6 @@
   });
 })();
 
-// Project filters on the /cybersecurity page
-(function () {
-  const buttons = document.querySelectorAll('.filters button');
-  const items = document.querySelectorAll('.portfolio-item[data-group]');
-  buttons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      buttons.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      const f = btn.getAttribute('data-filter');
-      items.forEach(function (item) {
-        item.style.display = f === 'all' || item.getAttribute('data-group') === f ? '' : 'none';
-      });
-    });
-  });
-})();
-
 // GitHub / live-demo buttons: take URLs from links.js, hide the button while the URL is empty
 (function () {
   const links = window.PROJECT_LINKS || {};
