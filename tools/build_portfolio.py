@@ -3,7 +3,7 @@
 Generates:
   index.html (Certifications section)  from tools/certifications.yml
   404.html, sitemap.xml, robots.txt
-  data-science/index.html            from tools/data-science-cards.html
+  data-science/index.html            from tools/data-science-projects.yml
   cybersecurity/index.html           from tools/cybersecurity-projects.yml
   cybersecurity/<slug>/index.html    one S.T.A.R. page per cybersecurity project
 
@@ -228,22 +228,43 @@ def build_sitemap(projects):
 
 
 # --------------------------------------------------------------- data science
-def build_data_science(certs):
-    cards = (TOOLS / "data-science-cards.html").read_text().split("-->", 1)[1]
-    cards = cards.replace('src="images/', 'src="../images/')
+def ds_card(p):
+    return f"""            <div class="portfolio-item padd-15" data-group="{p['group']}">
+              <a href="{p['url']}" target="_blank" rel="noopener" class="portfolio-link">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="../images/data-science/{p['slug']}.jpg" alt="{e(p['title'])}" loading="lazy" />
+                  </div>
+                  <div class="portfolio-info padd-15">
+                    <span class="project-category">{e(p['category'])}</span>
+                    <h4>{e(p['title'])}</h4>
+                    <p>{e(p['summary'])}</p>
+                  </div>
+                </div>
+              </a>
+            </div>"""
+
+
+def build_data_science(ds, certs):
+    projects = ds["projects"]
+    used = [g for g in ds["groups"] if any(p["group"] == g for p in projects)]
+    filters = ['<button class="active" data-filter="all">All</button>'] + [
+        f'<button data-filter="{g}">{e(ds["groups"][g])}</button>' for g in used]
     body = "\n".join([
         breadcrumb(1, ("Data Science", None)),
         section_title("Data Science Projects"),
         '          <div class="row">',
-        '            <p class="page-intro padd-15">Machine learning, analytics and data engineering projects. '
-        'Each card opens the full project on my <a href="https://www.datascienceportfol.io/pulemoliserr" target="_blank" '
-        'rel="noopener">datascienceportfol.io</a> profile.</p>',
-        cards.rstrip(),
+        f'            <p class="page-intro padd-15">{len(projects)} projects in machine learning, data engineering, '
+        'GenAI and business analytics. Each card opens the full write-up, with links to the live app and code, on my '
+        '<a href="https://www.datascienceportfol.io/pulemoliserr" target="_blank" rel="noopener">datascienceportfol.io</a> profile.</p>',
+        '            <div class="filters padd-15">' + "".join(filters) + "</div>",
+        "\n".join(ds_card(p) for p in projects),
         "          </div>",
         related_certs(certs, "data-science", 1),
     ])
     page = shell(1, "data-science", "Data Science Projects | Pule Molise",
-                 "Data science and machine learning projects by Pule Molise.", "/data-science/", body)
+                 f"{len(projects)} data science, machine learning and data engineering projects by Pule Molise.",
+                 "/data-science/", body)
     out = ROOT / "data-science" / "index.html"
     out.parent.mkdir(exist_ok=True)
     out.write_text(page)
@@ -382,11 +403,16 @@ def main():
     inject_certifications(certs)
     build_404()
     build_sitemap(projects)
-    build_data_science(certs)
+    ds = yaml.safe_load((TOOLS / "data-science-projects.yml").read_text())
+    for p in ds["projects"]:
+        assert p["group"] in ds["groups"], f"{p['slug']}: unknown group {p['group']}"
+        assert (ROOT / "images" / "data-science" / f"{p['slug']}.jpg").exists(), f"missing thumbnail for {p['slug']}"
+        assert p["url"].startswith("https://"), f"{p['slug']}: url must start with https://"
+    build_data_science(ds, certs)
     build_cyber_index(data, certs)
     for i, p in enumerate(projects):
         build_project(p, projects[i - 1] if i else None, projects[i + 1] if i + 1 < len(projects) else None)
-    print(f"Built certifications ({len(certs['certifications'])}), data-science/, cybersecurity/ "
+    print(f"Built certifications ({len(certs['certifications'])}), data-science/ ({len(ds['projects'])}), cybersecurity/ "
           f"and {len(projects)} project pages.")
 
 
