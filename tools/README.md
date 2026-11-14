@@ -42,3 +42,8 @@ To add a certificate: put the PDF in `certifications/files/<slug>.pdf`, create a
 `images/certifications/<slug>.jpg` (for example, a screenshot of the PDF about 880 px wide), add an entry to the
 YAML file and run `python tools/build_portfolio.py`. The script rewrites only the part of `index.html` between the
 `<!-- certifications:start -->` and `<!-- certifications:end -->` markers.
+
+## Also generated
+
+`python tools/build_portfolio.py` also writes `404.html` (the "page not found" page), `sitemap.xml` and
+`robots.txt`. The sitemap lists every portfolio page, so it updates itself when you add a project.
